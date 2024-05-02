@@ -1,19 +1,13 @@
-import styled from "@emotion/styled";
-import { space } from "styled-system";
 import Button from "./ui/Button";
 import Input from "./ui/Input";
-
-const H1 = styled.h1`
-  ${space}
-  color: var(--color-brand-600);
-`;
+import Heading from "./ui/Heading";
 
 function App() {
   return (
     <div>
-      <H1 m={4} p={2}>
+      <Heading m={4} p={2} as="h1">
         Project Starter
-      </H1>
+      </Heading>
       <Button>Song</Button>{" "}
       <Input type="text" placeholder="Search for a song" />
     </div>

@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const NavList = styled.ul`
   display: flex;
@@ -47,7 +47,24 @@ const StyledNavLink = styled(NavLink)`
 `;
 
 function MainNav() {
-  return <nav>Nav list</nav>;
+  return (
+    <nav>
+      <NavList>
+        <li>
+          <StyledNavLink to="/dashbord">Home</StyledNavLink>
+        </li>
+        <li>
+          <StyledNavLink to="/songs">Songs</StyledNavLink>
+        </li>
+        <li>
+          <StyledNavLink to="/playlists">Playlists</StyledNavLink>
+        </li>
+        <li>
+          <StyledNavLink to="/about">About</StyledNavLink>
+        </li>
+      </NavList>
+    </nav>
+  );
 }
 
 export default MainNav;

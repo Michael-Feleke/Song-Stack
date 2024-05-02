@@ -1,4 +1,13 @@
 import styled from "@emotion/styled";
+import {
+  HiFolder,
+  HiInformationCircle,
+  HiOutlineFolder,
+  HiOutlineHome,
+  HiOutlineInformationCircle,
+  HiOutlineMicrophone,
+} from "react-icons/hi";
+import { HiMiniArrowLeftOnRectangle, HiOutlineRadio } from "react-icons/hi2";
 import { Link, NavLink } from "react-router-dom";
 
 const NavList = styled.ul`
@@ -51,16 +60,28 @@ function MainNav() {
     <nav>
       <NavList>
         <li>
-          <StyledNavLink to="/dashbord">Home</StyledNavLink>
+          <StyledNavLink to="/dashbord">
+            <HiOutlineHome />
+            <span>Home</span>
+          </StyledNavLink>
         </li>
         <li>
-          <StyledNavLink to="/songs">Songs</StyledNavLink>
+          <StyledNavLink to="/songs">
+            <HiOutlineMicrophone />
+            <span>Songs</span>
+          </StyledNavLink>
         </li>
         <li>
-          <StyledNavLink to="/playlists">Playlists</StyledNavLink>
+          <StyledNavLink to="/playlists">
+            <HiOutlineFolder />
+            <span>Playlists</span>
+          </StyledNavLink>
         </li>
         <li>
-          <StyledNavLink to="/about">About</StyledNavLink>
+          <StyledNavLink to="/about">
+            <HiOutlineInformationCircle />
+            <span>About</span>
+          </StyledNavLink>
         </li>
       </NavList>
     </nav>

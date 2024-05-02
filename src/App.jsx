@@ -3,7 +3,7 @@ import { space } from "styled-system";
 
 const H1 = styled.h1`
   ${space}
-  color: red;
+  color: var(--color-brand-600);
 `;
 
 function App() {

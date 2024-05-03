@@ -1,11 +1,15 @@
 import styled from "@emotion/styled";
 import SongCard from "./SongCard";
 
-const Ul = styled.ul`
+const Container = styled.div`
   display: grid;
-  gap: 3rem;
-  max-height: 100%;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  border-radius: 2rem;
+  box-shadow: 0 0 1rem var(--bg-color);
 `;
 
 const songs = [
@@ -67,11 +71,11 @@ const songs = [
 
 function SongContainer() {
   return (
-    <Ul>
+    <Container>
       {songs.map((song) => (
         <SongCard song={song} key={song.id} />
       ))}
-    </Ul>
+    </Container>
   );
 }
 

@@ -2,48 +2,45 @@ import styled from "@emotion/styled";
 import Button from "../ui/Button";
 import { HiOutlineFolderAdd, HiPencil, HiTrash } from "react-icons/hi";
 
-const Li = styled.li`
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
-`;
-
-const CardContainer = styled.div`
+const CardBox = styled.div`
+  width: 80%;
+  margin: 0 auto;
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: var(--color-grey-700);
-  background-color: var(--color-grey-0);
-  width: 32rem;
-  border-radius: 0.75rem;
-  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.2);
-  width: 100%;
-`;
-
-const ImageContainer = styled.div`
-  position: relative;
-  margin: 1.5rem 1.5rem 1rem 1.5rem;
-  width: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--color-grey-700);
-  background-color: var(--color-grey-0);
-  border-radius: 0.75rem;
+  overflow: hidden;
+  border-radius: 2rem;
+  box-shadow: 0 0 1rem var(--bg-color);
 `;
 
 const Img = styled.img`
-  object-fit: cover;
   width: 100%;
-  height: 100%;
-  border-radius: 0.75rem;
+  transition: 0.5s ease;
+  opacity: 0.7;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 `;
 
-const DetailContainer = styled.div`
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
-  height: 15rem;
+const CardLayer = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transform: translateY(100%);
+  display: flex;
+  flex-direction: column;
+  padding: 0 4rem;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.1),
+    var(--color-grey-700)
+  );
+  transition: 0.5s ease;
+  transform: translateY(0%);
 `;
 
 const Name = styled.h2`
@@ -53,16 +50,16 @@ const Name = styled.h2`
 `;
 
 const Detail = styled.p`
-  margin-bottom: 0.5rem;
-  font-size: 1rem;
-  font-weight: 400;
+  font-size: 1.6rem;
+  margin: 0.3rem 0 1rem;
+  color: white;
 `;
 
 const ButtonContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem;
+  padding: 1.5rem 1rem;
   width: 100%;
   border-top: 1px solid var(--color-grey-300);
 `;
@@ -71,31 +68,29 @@ function SongCard({ song }) {
   const { image, name, releasedDate, artist, album, composer } = song;
 
   return (
-    <Li>
-      <CardContainer>
-        <ImageContainer>
-          <Img src={image} alt={image} />
-        </ImageContainer>
-        <DetailContainer>
+    <CardBox>
+      <div>
+        <Img src={image} alt={image} />
+        <CardLayer>
           <Name>{name}</Name>
           <Detail>Released Date: {releasedDate}</Detail>
           <Detail>Artist: {artist}</Detail>
           <Detail>Album: {album}</Detail>
           <Detail>Composer: {composer}</Detail>
-        </DetailContainer>
-        <ButtonContainer>
-          <Button variation="secondary">
-            <HiPencil /> Edit
-          </Button>
-          <Button variation="primary">
-            <HiOutlineFolderAdd /> Add
-          </Button>
-          <Button variation="danger">
-            <HiTrash /> Delete
-          </Button>
-        </ButtonContainer>
-      </CardContainer>
-    </Li>
+        </CardLayer>
+      </div>
+      <ButtonContainer>
+        <Button variation="secondary" size="small">
+          <HiPencil /> Edit
+        </Button>
+        <Button variation="primary" size="small">
+          <HiOutlineFolderAdd /> Add
+        </Button>
+        <Button variation="danger" size="small">
+          <HiTrash /> Delete
+        </Button>
+      </ButtonContainer>
+    </CardBox>
   );
 }
 

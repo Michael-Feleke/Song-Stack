@@ -10,6 +10,7 @@ const Container = styled.div`
   overflow: hidden;
   border-radius: 2rem;
   box-shadow: 0 0 1rem var(--bg-color);
+  padding: 2rem 0;
 `;
 
 const songs = [

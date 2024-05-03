@@ -5,17 +5,20 @@ import { HiOutlineFolderAdd, HiPencil, HiTrash } from "react-icons/hi";
 const CardBox = styled.div`
   width: 80%;
   margin: 0 auto;
+  border-radius: 0.75rem;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+`;
+
+const CardDetail = styled.div`
   position: relative;
   overflow: hidden;
   border-radius: 2rem;
-  box-shadow: 0 0 1rem var(--bg-color);
 `;
 
 const Img = styled.img`
   width: 100%;
   transition: 0.5s ease;
   opacity: 0.7;
-
   &:hover {
     transform: scale(1.1);
   }
@@ -36,11 +39,11 @@ const CardLayer = styled.div`
   height: 100%;
   background: linear-gradient(
     to top,
-    rgba(0, 0, 0, 0.1),
+    rgba(0, 0, 0, 0.7),
     var(--color-grey-700)
   );
   transition: 0.5s ease;
-  transform: translateY(0%);
+  /* transform: translateY(0%); */
 `;
 
 const Name = styled.h2`
@@ -61,7 +64,6 @@ const ButtonContainer = styled.div`
   align-items: center;
   padding: 1.5rem 1rem;
   width: 100%;
-  border-top: 1px solid var(--color-grey-300);
 `;
 
 function SongCard({ song }) {
@@ -69,7 +71,7 @@ function SongCard({ song }) {
 
   return (
     <CardBox>
-      <div>
+      <CardDetail>
         <Img src={image} alt={image} />
         <CardLayer>
           <Name>{name}</Name>
@@ -78,7 +80,7 @@ function SongCard({ song }) {
           <Detail>Album: {album}</Detail>
           <Detail>Composer: {composer}</Detail>
         </CardLayer>
-      </div>
+      </CardDetail>
       <ButtonContainer>
         <Button variation="secondary" size="small">
           <HiPencil /> Edit

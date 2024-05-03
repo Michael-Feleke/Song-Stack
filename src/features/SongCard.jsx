@@ -12,7 +12,8 @@ const CardBox = styled.div`
 const CardDetail = styled.div`
   position: relative;
   overflow: hidden;
-  border-radius: 2rem;
+  border-top-right-radius: 0.75rem;
+  border-top-left-radius: 0.75rem;
 `;
 
 const Img = styled.img`
@@ -39,23 +40,30 @@ const CardLayer = styled.div`
   height: 100%;
   background: linear-gradient(
     to top,
-    rgba(0, 0, 0, 0.7),
+    rgba(0, 0, 0, 0.5),
     var(--color-grey-700)
   );
   transition: 0.5s ease;
-  /* transform: translateY(0%); */
+  transform: translateY(0%);
 `;
 
 const Name = styled.h2`
   margin-bottom: 1rem;
   font-size: 1.5rem;
   font-weight: 500;
+  text-align: center;
+  margin-top: 1rem;
 `;
 
 const Detail = styled.p`
-  font-size: 1.6rem;
+  font-size: 1.2rem;
   margin: 0.3rem 0 1rem;
   color: white;
+  width: 100%;
+`;
+
+const Span = styled.span`
+  color: orange;
 `;
 
 const ButtonContainer = styled.div`
@@ -75,12 +83,21 @@ function SongCard({ song }) {
         <Img src={image} alt={image} />
         <CardLayer>
           <Name>{name}</Name>
-          <Detail>Released Date: {releasedDate}</Detail>
-          <Detail>Artist: {artist}</Detail>
-          <Detail>Album: {album}</Detail>
-          <Detail>Composer: {composer}</Detail>
+          <Detail>
+            <Span>Released Date: </Span> {releasedDate}
+          </Detail>
+          <Detail>
+            <Span>Artist:</Span> {artist}
+          </Detail>
+          <Detail>
+            <Span>Album:</Span> {album}
+          </Detail>
+          <Detail>
+            <Span>Composer:</Span> {composer}
+          </Detail>
         </CardLayer>
       </CardDetail>
+      <Name>{name}</Name>
       <ButtonContainer>
         <Button variation="secondary" size="small">
           <HiPencil /> Edit

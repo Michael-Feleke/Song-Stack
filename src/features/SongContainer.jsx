@@ -36,6 +36,33 @@ const songs = [
     album: "Tikur Sew",
     composer: "Michael Hailu",
   },
+  {
+    songId: 4,
+    image: "logo-light.png",
+    name: "Tikur Sew",
+    releasedDate: "05/07/2006",
+    artist: "Teddy Aftro",
+    album: "Tikur Sew",
+    composer: "Michael Hailu",
+  },
+  {
+    songId: 5,
+    image: "logo-light.png",
+    name: "Tikur Sew",
+    releasedDate: "05/07/2006",
+    artist: "Teddy Aftro",
+    album: "Tikur Sew",
+    composer: "Michael Hailu",
+  },
+  {
+    songId: 6,
+    image: "logo-light.png",
+    name: "Tikur Sew",
+    releasedDate: "05/07/2006",
+    artist: "Teddy Aftro",
+    album: "Tikur Sew",
+    composer: "Michael Hailu",
+  },
 ];
 
 function SongContainer() {

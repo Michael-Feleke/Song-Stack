@@ -1,10 +1,11 @@
 import styled from "@emotion/styled";
 import Button from "../ui/Button";
-import { HiPencil, HiTrash } from "react-icons/hi";
+import { HiOutlineFolderAdd, HiPencil, HiTrash } from "react-icons/hi";
 
 const Li = styled.li`
   margin-left: auto;
   margin-right: auto;
+  width: 100%;
 `;
 
 const CardContainer = styled.div`
@@ -17,6 +18,7 @@ const CardContainer = styled.div`
   width: 32rem;
   border-radius: 0.75rem;
   box-shadow: 0 0 2rem rgba(0, 0, 0, 0.2);
+  width: 100%;
 `;
 
 const ImageContainer = styled.div`
@@ -84,6 +86,9 @@ function SongCard({ song }) {
         <ButtonContainer>
           <Button variation="secondary">
             <HiPencil /> Edit
+          </Button>
+          <Button variation="primary">
+            <HiOutlineFolderAdd /> Add
           </Button>
           <Button variation="danger">
             <HiTrash /> Delete

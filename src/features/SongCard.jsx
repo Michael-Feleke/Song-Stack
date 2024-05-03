@@ -1,4 +1,6 @@
 import styled from "@emotion/styled";
+import Button from "../ui/Button";
+import { HiPencil, HiTrash } from "react-icons/hi";
 
 const Li = styled.li`
   margin-left: auto;
@@ -64,7 +66,7 @@ const ButtonContainer = styled.div`
 `;
 
 function SongCard({ song }) {
-  const { songId, image, name, releasedDate, artist, album, composer } = song;
+  const { image, name, releasedDate, artist, album, composer } = song;
 
   return (
     <Li>
@@ -79,6 +81,14 @@ function SongCard({ song }) {
           <Detail>Album: {album}</Detail>
           <Detail>Composer: {composer}</Detail>
         </DetailContainer>
+        <ButtonContainer>
+          <Button variation="secondary">
+            <HiPencil /> Edit
+          </Button>
+          <Button variation="danger">
+            <HiTrash /> Delete
+          </Button>
+        </ButtonContainer>
       </CardContainer>
     </Li>
   );

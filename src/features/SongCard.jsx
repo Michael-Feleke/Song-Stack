@@ -54,6 +54,15 @@ const Detail = styled.p`
   font-weight: 400;
 `;
 
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  width: 100%;
+  border-top: 1px solid var(--color-grey-300);
+`;
+
 function SongCard({ song }) {
   const { songId, image, name, releasedDate, artist, album, composer } = song;
 

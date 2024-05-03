@@ -7,7 +7,11 @@ import {
   HiOutlineInformationCircle,
   HiOutlineMicrophone,
 } from "react-icons/hi";
-import { HiMiniArrowLeftOnRectangle, HiOutlineRadio } from "react-icons/hi2";
+import {
+  HiMiniArrowLeftOnRectangle,
+  HiMusicalNote,
+  HiOutlineRadio,
+} from "react-icons/hi2";
 import { Link, NavLink } from "react-router-dom";
 
 const NavList = styled.ul`
@@ -36,7 +40,7 @@ const StyledNavLink = styled(NavLink)`
   &.active:link,
   &.active:visited {
     color: var(--color-grey-800);
-    background-color: var(--color-grey-50);
+    background-color: var(--color-grey-100);
     border-radius: var(--border-radius-sm);
   }
 
@@ -67,7 +71,7 @@ function MainNav() {
         </li>
         <li>
           <StyledNavLink to="/songs">
-            <HiOutlineMicrophone />
+            <HiMusicalNote />
             <span>Songs</span>
           </StyledNavLink>
         </li>

@@ -46,7 +46,7 @@ const CardLayer = styled.div`
     var(--color-grey-700)
   );
   transition: 0.5s ease;
-  transform: translateY(0%);
+  /* transform: translateY(0); */
 `;
 
 const Name = styled.h2`
@@ -72,7 +72,7 @@ const ButtonContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem 1rem;
+  padding: 1.5rem 1rem 2rem;
   width: 100%;
 `;
 

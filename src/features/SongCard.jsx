@@ -86,9 +86,6 @@ function SongCard({ song }) {
         <CardLayer>
           <Name>{name}</Name>
           <Detail>
-            <Span>Released Date: </Span> {releasedDate}
-          </Detail>
-          <Detail>
             <Span>Artist:</Span> {artist}
           </Detail>
           <Detail>
@@ -96,6 +93,9 @@ function SongCard({ song }) {
           </Detail>
           <Detail>
             <Span>Composer:</Span> {composer}
+          </Detail>
+          <Detail>
+            <Span>Released Date: </Span> {releasedDate}
           </Detail>
         </CardLayer>
       </CardDetail>

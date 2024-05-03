@@ -1,6 +1,7 @@
+import { useState } from "react";
 import styled from "@emotion/styled";
 import Button from "../ui/Button";
-import { HiOutlineFolderAdd, HiPencil, HiPlay, HiTrash } from "react-icons/hi";
+import { HiPencil, HiTrash } from "react-icons/hi";
 import { HiPlayCircle } from "react-icons/hi2";
 
 const CardBox = styled.div`
@@ -8,13 +9,6 @@ const CardBox = styled.div`
   margin: 0 auto;
   border-radius: 0.75rem;
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
-`;
-
-const CardDetail = styled.div`
-  position: relative;
-  overflow: hidden;
-  border-top-right-radius: 0.75rem;
-  border-top-left-radius: 0.75rem;
 `;
 
 const Img = styled.img`
@@ -26,27 +20,32 @@ const Img = styled.img`
   }
 `;
 
-const CardLayer = styled.div`
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  transform: translateY(100%);
-  display: flex;
-  flex-direction: column;
-  padding: 0 4rem;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 0.5),
-    var(--color-grey-700)
-  );
-  transition: 0.5s ease;
-  /* transform: translateY(0); */
+const cardLayerStyles = (props) => ({
+  width: "100%",
+  position: "absolute",
+  bottom: 0,
+  left: 0,
+  transform: `translateY(${props.hovered ? "0" : "100%"})`,
+  display: "flex",
+  flexDirection: "column",
+  padding: "0 4rem",
+  textAlign: "center",
+  justifyContent: "center",
+  alignItems: "center",
+  width: "100%",
+  height: "100%",
+  background:
+    "linear-gradient(to top, rgba(0, 0, 0, 0.5), var(--color-grey-700))",
+  transition: "transform 0.5s ease",
+});
+
+const CardLayer = styled.div(cardLayerStyles);
+
+const CardDetail = styled.div`
+  position: relative;
+  overflow: hidden;
+  border-top-right-radius: 0.75rem;
+  border-top-left-radius: 0.75rem;
 `;
 
 const Name = styled.h2`
@@ -77,13 +76,17 @@ const ButtonContainer = styled.div`
 `;
 
 function SongCard({ song }) {
+  const [isHovered, setIsHovered] = useState(false);
   const { image, name, releasedDate, artist, album, composer } = song;
 
   return (
     <CardBox>
-      <CardDetail>
+      <CardDetail
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
         <Img src={image} alt={image} />
-        <CardLayer>
+        <CardLayer hovered={isHovered}>
           <Name>{name}</Name>
           <Detail>
             <Span>Artist:</Span> {artist}

@@ -74,7 +74,7 @@ function SongContainer() {
   return (
     <Container>
       {songs.map((song) => (
-        <SongCard song={song} key={song.id} />
+        <SongCard song={song} key={song.songId} />
       ))}
     </Container>
   );

@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import Button from "../ui/Button";
-import { HiOutlineFolderAdd, HiPencil, HiTrash } from "react-icons/hi";
+import { HiOutlineFolderAdd, HiPencil, HiPlay, HiTrash } from "react-icons/hi";
+import { HiPlayCircle } from "react-icons/hi2";
 
 const CardBox = styled.div`
   width: 80%;
@@ -26,6 +27,7 @@ const Img = styled.img`
 `;
 
 const CardLayer = styled.div`
+  width: 100%;
   position: absolute;
   bottom: 0;
   left: 0;
@@ -59,7 +61,7 @@ const Detail = styled.p`
   font-size: 1.2rem;
   margin: 0.3rem 0 1rem;
   color: white;
-  width: 100%;
+  width: 200px;
 `;
 
 const Span = styled.span`
@@ -103,7 +105,7 @@ function SongCard({ song }) {
           <HiPencil /> Edit
         </Button>
         <Button variation="primary" size="small">
-          <HiOutlineFolderAdd /> Add
+          <HiPlayCircle /> Play
         </Button>
         <Button variation="danger" size="small">
           <HiTrash /> Delete

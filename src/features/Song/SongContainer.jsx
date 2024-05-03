@@ -22,6 +22,7 @@ const songs = [
     artist: "Teddy Aftro",
     album: "Tikur Sew",
     composer: "Michael Hailu",
+    genere: "Pop",
   },
   {
     songId: 2,
@@ -31,6 +32,7 @@ const songs = [
     artist: "Teddy Aftro",
     album: "Tikur Sew",
     composer: "Michael Hailu",
+    genere: "Pop",
   },
   {
     songId: 3,
@@ -49,6 +51,7 @@ const songs = [
     artist: "Teddy Aftro",
     album: "Tikur Sew",
     composer: "Michael Hailu",
+    genere: "Pop",
   },
   {
     songId: 5,
@@ -58,6 +61,7 @@ const songs = [
     artist: "Teddy Aftro",
     album: "Tikur Sew",
     composer: "Michael Hailu",
+    genere: "Pop",
   },
   {
     songId: 6,
@@ -67,6 +71,7 @@ const songs = [
     artist: "Teddy Aftro",
     album: "Tikur Sew",
     composer: "Michael Hailu",
+    genere: "Pop",
   },
 ];
 

@@ -77,7 +77,7 @@ const ButtonContainer = styled.div`
 
 function SongCard({ song }) {
   const [isHovered, setIsHovered] = useState(false);
-  const { image, name, releasedDate, artist, album, composer } = song;
+  const { image, name, releasedDate, artist, album, composer, genere } = song;
 
   return (
     <CardBox>
@@ -93,6 +93,9 @@ function SongCard({ song }) {
           </Detail>
           <Detail>
             <Span>Album:</Span> {album}
+          </Detail>
+          <Detail>
+            <Span>Genere:</Span> {genere}
           </Detail>
           <Detail>
             <Span>Composer:</Span> {composer}

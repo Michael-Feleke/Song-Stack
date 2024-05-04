@@ -32,6 +32,17 @@ const songsSlice = createSlice({
       state.status = "failed";
       state.error = action.payload;
     },
+    deleteSongStart(state) {
+      state.status = "loading";
+    },
+    deleteSongSuccess(state, action) {
+      state.status = "succeeded";
+      state.songs = state.songs.filter((song) => song.id !== action.payload);
+    },
+    deleteSongFailure(state, action) {
+      state.status = "failed";
+      state.error = action.payload;
+    },
   },
 });
 

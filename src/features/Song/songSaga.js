@@ -6,8 +6,10 @@ import {
   postSongSuccess,
   postSongFailure,
   postSongStart,
+  deleteSongSuccess,
+  deleteSongFailure,
 } from "./songSlice";
-import api, { fetchSongs, postCreatedSong } from "../../api";
+import api, { deleteSongById, fetchSongs, postCreatedSong } from "../../api";
 import { getSongs as getSongsFn } from "./songSlice";
 
 function* getSongs() {
@@ -33,6 +35,17 @@ function* postSong(action) {
   }
 }
 
+function* deleteSong(action) {
+  try {
+    const songId = action.payload;
+    yield call(deleteSongById, songId, api);
+    yield put(deleteSongSuccess());
+    yield put(getSongsFn());
+  } catch (error) {
+    yield put(deleteSongFailure(error.message));
+  }
+}
+
 function* watchPostSong() {
   yield takeEvery("songs/postSong", postSong);
 }
@@ -40,7 +53,10 @@ function* watchPostSong() {
 function* watchGetSong() {
   yield takeEvery("songs/getSongs", getSongs);
 }
+function* watchDeleteSong() {
+  yield takeEvery("songs/deleteSong", deleteSong);
+}
 
 export function* songsSaga() {
-  yield all([fork(watchGetSong), fork(watchPostSong)]);
+  yield all([fork(watchGetSong), fork(watchPostSong), fork(watchDeleteSong)]);
 }

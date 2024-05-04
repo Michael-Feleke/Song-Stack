@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { postSong, updateSong } from "./songSlice";
 import Spinnermini from "../../ui/Spinnermini";
 import { HiXCircle } from "react-icons/hi";
+import toast from "react-hot-toast";
 
 const FormContainer = styled.form`
   display: flex;
@@ -86,6 +87,13 @@ function CreateSongForm({
     };
 
     isEditing ? dispatch(updateSong(song)) : dispatch(postSong(song));
+    status === "succeeded" &&
+      toast.success(
+        ` ${
+          isEditing ? "Song updated successfully" : " Song created successfully"
+        }`
+      );
+    toggleModal();
   };
 
   const handleClose = () => {

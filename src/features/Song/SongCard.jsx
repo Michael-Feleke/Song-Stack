@@ -8,6 +8,7 @@ import { deleteSong } from "./songSlice";
 import Modal from "../../ui/Modal";
 import CreateSongForm from "./CreateSongForm";
 import Spinnermini from "../../ui/Spinnermini";
+import toast from "react-hot-toast";
 
 const CardBox = styled.div`
   width: 80%;
@@ -97,8 +98,15 @@ function SongCard({ song }) {
   }
 
   const handleDeleteSong = () => {
+    const confirmed = window.confirm(
+      "Are you sure you want to delete this song?"
+    );
+    if (!confirmed) {
+      return;
+    }
     setDeleteIndex(id);
     dispatch(deleteSong(id));
+    status === "succeeded" && toast.success("Song deleted successfully");
   };
 
   return (

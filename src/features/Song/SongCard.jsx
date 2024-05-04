@@ -3,10 +3,11 @@ import styled from "@emotion/styled";
 import Button from "../../ui/Button";
 import { HiPencil, HiTrash } from "react-icons/hi";
 import { HiPlayCircle } from "react-icons/hi2";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { deleteSong } from "./songSlice";
 import Modal from "../../ui/Modal";
 import CreateSongForm from "./CreateSongForm";
+import Spinnermini from "../../ui/Spinnermini";
 
 const CardBox = styled.div`
   width: 80%;
@@ -36,7 +37,6 @@ const cardLayerStyles = (props) => ({
   textAlign: "center",
   justifyContent: "center",
   alignItems: "center",
-  width: "100%",
   height: "100%",
   background:
     "linear-gradient(to top, rgba(0, 0, 0, 0.5), var(--color-grey-700))",
@@ -82,10 +82,13 @@ const ButtonContainer = styled.div`
 function SongCard({ song }) {
   const [isHovered, setIsHovered] = useState(false);
   const { id, title, releasedDate, artist, album, composer, genere } = song;
+  const [deleteIndex, setDeleteIndex] = useState("");
 
   const [showModal, setShowModal] = useState(false);
 
   const toggleModal = () => setShowModal((prev) => !prev);
+
+  const status = useSelector((state) => state.songs.status);
 
   const dispatch = useDispatch();
 
@@ -94,6 +97,7 @@ function SongCard({ song }) {
   }
 
   const handleDeleteSong = () => {
+    setDeleteIndex(id);
     dispatch(deleteSong(id));
   };
 
@@ -127,15 +131,29 @@ function SongCard({ song }) {
         <Button onClick={toggleModal} variation="secondary" size="small">
           <HiPencil /> Edit
         </Button>
-        <Button variation="primary" size="small">
-          <HiPlayCircle /> Play
-        </Button>
-        <Button onClick={handleDeleteSong} variation="danger" size="small">
-          <HiTrash /> Delete
-        </Button>
+        <HiPlayCircle size={30} />
+        {status == "loading" && deleteIndex == id ? (
+          <Button
+            disabled
+            style={{ opacity: "0.5" }}
+            variation="danger"
+            size="small"
+          >
+            <Spinnermini /> Deleteing
+          </Button>
+        ) : (
+          <Button onClick={handleDeleteSong} variation="danger" size="small">
+            <HiTrash /> Delete
+          </Button>
+        )}
       </ButtonContainer>
       <Modal isOpen={showModal} onClose={toggleModal}>
-        <CreateSongForm song={song} isEditing={true} />
+        <CreateSongForm
+          toggleModal={toggleModal}
+          showModal={showModal}
+          song={song}
+          isEditing={true}
+        />
       </Modal>
     </CardBox>
   );

@@ -3,6 +3,8 @@ import styled from "@emotion/styled";
 import Button from "../../ui/Button";
 import { HiPencil, HiTrash } from "react-icons/hi";
 import { HiPlayCircle } from "react-icons/hi2";
+import { useDispatch } from "react-redux";
+import { deleteSong } from "./songSlice";
 
 const CardBox = styled.div`
   width: 80%;
@@ -77,11 +79,18 @@ const ButtonContainer = styled.div`
 
 function SongCard({ song }) {
   const [isHovered, setIsHovered] = useState(false);
+  const { id, title, releasedDate, artist, album, composer, genere } = song;
+
+  const dispatch = useDispatch();
+
   if (!song) {
     return null;
   }
 
-  const { title, releasedDate, artist, album, composer, genere } = song;
+  const handleDeleteSong = () => {
+    dispatch(deleteSong(id));
+  };
+
   return (
     <CardBox>
       <CardDetail
@@ -115,7 +124,7 @@ function SongCard({ song }) {
         <Button variation="primary" size="small">
           <HiPlayCircle /> Play
         </Button>
-        <Button variation="danger" size="small">
+        <Button onClick={handleDeleteSong} variation="danger" size="small">
           <HiTrash /> Delete
         </Button>
       </ButtonContainer>

@@ -78,26 +78,6 @@
       "composer": "asdf",
       "releasedDate": "2024-05-14",
       "image": "logo-light.png"
-    },
-    {
-      "id": "mc2tbpqss",
-      "title": "asdf",
-      "artist": "df",
-      "genere": "df",
-      "album": "df",
-      "composer": "df",
-      "releasedDate": "2024-05-29",
-      "image": "logo-light.png"
-    },
-    {
-      "id": "c40a",
-      "title": "asdf",
-      "artist": "df",
-      "genere": "df",
-      "album": "df",
-      "composer": "df",
-      "releasedDate": "2024-05-29",
-      "image": "logo-light.png"
     }
   ]
 }

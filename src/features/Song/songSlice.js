@@ -4,6 +4,7 @@ const initialState = {
   songs: [],
   status: "idle",
   error: null,
+  favorites: {},
 };
 
 const songsSlice = createSlice({
@@ -60,6 +61,14 @@ const songsSlice = createSlice({
       state.status = "failed";
       state.error = action.payload;
     },
+    toggleFavorite(state, action) {
+      const { songId } = action.payload;
+      if (state.favorites[songId]) {
+        delete state.favorites[songId];
+      } else {
+        state.favorites[songId] = true;
+      }
+    },
   },
 });
 
@@ -76,6 +85,7 @@ export const {
   updateSongStart,
   updateSongSuccess,
   updateSongFailure,
+  toggleFavorite,
 } = songsSlice.actions;
 
 export const getSongs = () => ({ type: "songs/getSongs" });

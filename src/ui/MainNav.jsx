@@ -3,6 +3,7 @@ import {
   HiFolder,
   HiInformationCircle,
   HiOutlineFolder,
+  HiOutlineHeart,
   HiOutlineHome,
   HiOutlineInformationCircle,
   HiOutlineMicrophone,
@@ -73,6 +74,12 @@ function MainNav() {
           <StyledNavLink to="/songs">
             <HiMusicalNote />
             <span>Songs</span>
+          </StyledNavLink>
+        </li>
+        <li>
+          <StyledNavLink to="/favorites">
+            <HiOutlineHeart />
+            <span>Favorites</span>
           </StyledNavLink>
         </li>
         <li>

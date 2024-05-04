@@ -15,7 +15,7 @@ const FormContainer = styled.form`
   align-items: center;
 `;
 
-const InputContainer = styled.div`
+const InputContainer = styled.span`
   display: flex;
   margin-bottom: 1.5rem;
   align-items: center;
@@ -40,10 +40,6 @@ const InputField = styled.input`
     outline: none;
     border-color: #8e44ad;
   }
-`;
-
-const StyledButton = styled(Button)`
-  margin-top: 1.5rem;
 `;
 
 const CloseContainer = styled.div`
@@ -162,13 +158,13 @@ function CreateSongForm({
           />
         </InputContainer>
         {status === "loading" ? (
-          <StyledButton disabled style={{ opacity: "0.5" }}>
+          <Button disabled style={{ opacity: "0.5" }}>
             <Spinnermini /> {isEditing ? "Updating" : "Creating"}
-          </StyledButton>
+          </Button>
         ) : (
-          <StyledButton onClick={handleSubmit}>
+          <Button type="submit" onClick={handleSubmit}>
             <HiMusicalNote /> {isEditing ? "Edit" : "Create"} Song
-          </StyledButton>
+          </Button>
         )}
       </FormContainer>
     </>

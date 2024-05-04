@@ -2,7 +2,9 @@ import styled from "@emotion/styled";
 import SongCard from "./SongCard";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import toast from "react-hot-toast";
 import { getSongs } from "./songSlice";
+import Spinner from "../../ui/Spinner";
 
 const Container = styled.div`
   display: grid;
@@ -26,8 +28,8 @@ function SongContainer() {
 
   return (
     <Container>
-      {status === "loading" && <p>Loading...</p>}
-      {status === "failed" && <p>{error}</p>}
+      {status === "loading" && <Spinner />}
+      {status === "failed" && toast.error(error)}
       {songs.map(
         (song) => song && song.id && <SongCard song={song} key={song.id} />
       )}

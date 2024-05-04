@@ -1,63 +1,103 @@
 {
   "songs": [
     {
-      "songId": 1,
       "image": "logo-light.png",
-      "name": "Tikur Sew",
+      "title": "Tikur Sew",
       "releasedDate": "05/07/2006",
       "artist": "Teddy Aftro",
       "album": "Tikur Sew",
       "composer": "Michael Hailu",
-      "genere": "Pop"
+      "genere": "Pop",
+      "id": "5965"
     },
     {
-      "songId": 2,
       "image": "logo-light.png",
-      "name": "Hilm Aydegemm",
+      "title": "Hilm Aydegemm",
       "releasedDate": "05/07/2006",
       "artist": "Teddy Aftro",
       "album": "Tikur Sew",
       "composer": "Michael Hailu",
-      "genere": "Pop"
+      "genere": "Pop",
+      "id": "06f1"
     },
     {
-      "songId": 3,
       "image": "logo-light.png",
-      "name": "Etege",
-      "releasedDate": "05/07/2006",
-      "artist": "Teddy Aftro",
-      "album": "Tikur Sew",
-      "composer": "Michael Hailu"
-    },
-    {
-      "songId": 4,
-      "image": "logo-light.png",
-      "name": "Tikur Sew",
+      "title": "Etege",
       "releasedDate": "05/07/2006",
       "artist": "Teddy Aftro",
       "album": "Tikur Sew",
       "composer": "Michael Hailu",
-      "genere": "Pop"
+      "id": "0030"
     },
     {
-      "songId": 5,
       "image": "logo-light.png",
-      "name": "Tikur Sew",
+      "title": "Tikur Sew",
       "releasedDate": "05/07/2006",
       "artist": "Teddy Aftro",
       "album": "Tikur Sew",
       "composer": "Michael Hailu",
-      "genere": "Pop"
+      "genere": "Pop",
+      "id": "2fb4"
     },
     {
-      "songId": 6,
       "image": "logo-light.png",
-      "name": "Tikur Sew",
+      "title": "Tikur Sew",
       "releasedDate": "05/07/2006",
       "artist": "Teddy Aftro",
       "album": "Tikur Sew",
       "composer": "Michael Hailu",
-      "genere": "Pop"
+      "genere": "Pop",
+      "id": "5190"
+    },
+    {
+      "image": "logo-light.png",
+      "title": "Tikur Sew",
+      "releasedDate": "05/07/2006",
+      "artist": "Teddy Aftro",
+      "album": "Tikur Sew",
+      "composer": "Michael Hailu",
+      "genere": "Pop",
+      "id": "851c"
+    },
+    {
+      "id": "1wn8kr8x7",
+      "title": "dfdf",
+      "artist": "dfdfdf",
+      "genere": "dfdfadf",
+      "album": "asdfsdf",
+      "composer": "asdf",
+      "releasedDate": "2024-05-14",
+      "image": "logo-light.png"
+    },
+    {
+      "id": "b147",
+      "title": "dfdf",
+      "artist": "dfdfdf",
+      "genere": "dfdfadf",
+      "album": "asdfsdf",
+      "composer": "asdf",
+      "releasedDate": "2024-05-14",
+      "image": "logo-light.png"
+    },
+    {
+      "id": "mc2tbpqss",
+      "title": "asdf",
+      "artist": "df",
+      "genere": "df",
+      "album": "df",
+      "composer": "df",
+      "releasedDate": "2024-05-29",
+      "image": "logo-light.png"
+    },
+    {
+      "id": "c40a",
+      "title": "asdf",
+      "artist": "df",
+      "genere": "df",
+      "album": "df",
+      "composer": "df",
+      "releasedDate": "2024-05-29",
+      "image": "logo-light.png"
     }
   ]
 }

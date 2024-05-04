@@ -4,7 +4,7 @@ import Button from "../../ui/Button";
 import { HiHeart, HiOutlineHeart, HiPencil, HiTrash } from "react-icons/hi";
 import { HiPlayCircle } from "react-icons/hi2";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteSong } from "./songSlice";
+import { deleteSong, toggleFavorite } from "./songSlice";
 import Modal from "../../ui/Modal";
 import CreateSongForm from "./CreateSongForm";
 import Spinnermini from "../../ui/Spinnermini";
@@ -81,17 +81,20 @@ const ButtonContainer = styled.div`
   width: 100%;
 `;
 
-function SongCard({ song }) {
-  const [isHovered, setIsHovered] = useState(false);
+function SongCard({ song, isFavorite = false }) {
+  const { status, favorites } = useSelector((state) => state.songs);
   const { id, title, releasedDate, artist, album, composer, genere } = song;
+  const [isHovered, setIsHovered] = useState(false);
 
-  const [isHeartClicked, setIsHeartClicked] = useState(false);
+  const isSongFavorite = favorites[id];
+
+  const [isHeartClicked, setIsHeartClicked] = useState(isSongFavorite);
 
   const [showModal, setShowModal] = useState(false);
 
   const toggleModal = () => setShowModal((prev) => !prev);
 
-  const status = useSelector((state) => state.songs.status);
+  console.log(favorites);
 
   const dispatch = useDispatch();
 
@@ -114,6 +117,7 @@ function SongCard({ song }) {
 
   const handleHeart = () => {
     setIsHeartClicked((cur) => !cur);
+    dispatch(toggleFavorite({ songId: id }));
   };
 
   return (
@@ -149,8 +153,9 @@ function SongCard({ song }) {
           cursor="pointer"
           color="Green"
         />
-
-        {isHeartClicked ? (
+        {isFavorite ? (
+          <HiHeart size={25} color="red" />
+        ) : isHeartClicked ? (
           <HiHeart
             onClick={handleHeart}
             cursor="pointer"
@@ -165,8 +170,15 @@ function SongCard({ song }) {
             color="red"
           />
         )}
-
-        <HiTrash size={25} cursor="pointer" onClick={handleDeleteSong} />
+        {isFavorite ? (
+          <HiTrash
+            size={25}
+            cursor="pointer"
+            onClick={() => dispatch(toggleFavorite({ songId: id }))}
+          />
+        ) : (
+          <HiTrash size={25} cursor="pointer" onClick={handleDeleteSong} />
+        )}
       </ButtonContainer>
       <Modal isOpen={showModal} onClose={toggleModal}>
         <CreateSongForm

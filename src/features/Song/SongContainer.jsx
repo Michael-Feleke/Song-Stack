@@ -28,9 +28,9 @@ function SongContainer() {
     <Container>
       {status === "loading" && <p>Loading...</p>}
       {status === "failed" && <p>{error}</p>}
-      {songs.map((song) => (
-        <SongCard song={song} key={song.songId} />
-      ))}
+      {songs.map(
+        (song) => song && song.id && <SongCard song={song} key={song.id} />
+      )}
     </Container>
   );
 }

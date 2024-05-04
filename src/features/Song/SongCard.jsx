@@ -117,6 +117,9 @@ function SongCard({ song, isFavorite = false }) {
   const handleHeart = () => {
     setIsHeartClicked((cur) => !cur);
     dispatch(toggleFavorite({ songId: id }));
+    isSongFavorite
+      ? toast.success("Removed from favorites")
+      : toast.success("Added to favorites");
   };
 
   return (

@@ -51,7 +51,6 @@ function CreateSongForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Perform form submission logic here
   };
 
   return (
@@ -63,7 +62,6 @@ function CreateSongForm() {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           placeholder="Enter title"
-          required
           required
         />
       </InputContainer>

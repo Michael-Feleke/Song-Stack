@@ -21,12 +21,29 @@ const songsSlice = createSlice({
       state.status = "failed";
       state.error = action.payload;
     },
+    postSongStart(state) {
+      state.status = "loading";
+    },
+    postSongSuccess(state, action) {
+      state.status = "succeeded";
+      state.songs.push(action.payload);
+    },
+    postSongFailure(state, action) {
+      state.status = "failed";
+      state.error = action.payload;
+    },
   },
 });
 
-export const { getSongsStart, getSongsSuccess, getSongsFailure } =
-  songsSlice.actions;
+export const {
+  getSongsStart,
+  getSongsSuccess,
+  getSongsFailure,
+  postSongStart,
+  postSongSuccess,
+  postSongFailure,
+} = songsSlice.actions;
 
 export const getSongs = () => ({ type: "songs/getSongs" });
-
+export const postSong = (song) => ({ type: "songs/postSong", payload: song });
 export default songsSlice.reducer;

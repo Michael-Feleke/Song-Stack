@@ -9,6 +9,7 @@ import Modal from "../../ui/Modal";
 import CreateSongForm from "./CreateSongForm";
 import Spinnermini from "../../ui/Spinnermini";
 import toast from "react-hot-toast";
+import { Tooltip } from "react-tooltip";
 
 const CardBox = styled.div`
   width: 80%;
@@ -94,8 +95,6 @@ function SongCard({ song, isFavorite = false }) {
 
   const toggleModal = () => setShowModal((prev) => !prev);
 
-  console.log(favorites);
-
   const dispatch = useDispatch();
 
   if (!song) {
@@ -152,32 +151,70 @@ function SongCard({ song, isFavorite = false }) {
           size={25}
           cursor="pointer"
           color="Green"
+          data-tooltip-id="my-tooltip"
+          data-tooltip-content="Edit Song"
+          data-tooltip-place="bottom"
+          style={{ outline: "none" }}
         />
+        <Tooltip id="my-tooltip" />
+
         {isFavorite ? (
           <HiHeart size={25} color="red" />
         ) : isHeartClicked ? (
-          <HiHeart
-            onClick={handleHeart}
-            cursor="pointer"
-            size={25}
-            color="red"
-          />
+          <>
+            <HiHeart
+              onClick={handleHeart}
+              cursor="pointer"
+              size={25}
+              color="red"
+              data-tooltip-id="my-tooltip1"
+              data-tooltip-content="Remove from favorites"
+              data-tooltip-place="bottom"
+              style={{ outline: "none" }}
+            />
+            <Tooltip id="my-tooltip1" />
+          </>
         ) : (
-          <HiOutlineHeart
-            onClick={handleHeart}
-            cursor="pointer"
-            size={25}
-            color="red"
-          />
+          <>
+            <HiOutlineHeart
+              onClick={handleHeart}
+              cursor="pointer"
+              size={25}
+              color="red"
+              data-tooltip-id="my-tooltip2"
+              data-tooltip-content="Add to favorites"
+              data-tooltip-place="bottom"
+              style={{ outline: "none" }}
+            />
+            <Tooltip id="my-tooltip2" />
+          </>
         )}
         {isFavorite ? (
-          <HiTrash
-            size={25}
-            cursor="pointer"
-            onClick={() => dispatch(toggleFavorite({ songId: id }))}
-          />
+          <>
+            <HiTrash
+              size={25}
+              cursor="pointer"
+              onClick={() => dispatch(toggleFavorite({ songId: id }))}
+              data-tooltip-id="my-tooltip3"
+              data-tooltip-content="Remove from favorites"
+              data-tooltip-place="bottom"
+              style={{ outline: "none" }}
+            />
+            <Tooltip id="my-tooltip3" />
+          </>
         ) : (
-          <HiTrash size={25} cursor="pointer" onClick={handleDeleteSong} />
+          <>
+            <HiTrash
+              size={25}
+              cursor="pointer"
+              onClick={handleDeleteSong}
+              data-tooltip-id="my-tooltip4"
+              data-tooltip-content="Delete Song"
+              data-tooltip-place="bottom"
+              style={{ outline: "none" }}
+            />
+            <Tooltip id="my-tooltip4" />
+          </>
         )}
       </ButtonContainer>
       <Modal isOpen={showModal} onClose={toggleModal}>

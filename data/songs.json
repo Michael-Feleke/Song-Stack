@@ -1078,6 +1078,26 @@
       "composer": "UNKNOWN",
       "releasedDate": "UNKNOWN",
       "image": "logo-light.png"
+    },
+    {
+      "id": null,
+      "title": "Michael",
+      "artist": "UNKNOWN",
+      "genere": "UNKNOWN",
+      "album": "UNKNOWN",
+      "composer": "UNKNOWN",
+      "releasedDate": "UNKNOWN",
+      "image": "logo-light.png"
+    },
+    {
+      "id": null,
+      "title": "Miki",
+      "artist": "UNKNOWN",
+      "genere": "UNKNOWN",
+      "album": "UNKNOWN",
+      "composer": "UNKNOWN",
+      "releasedDate": "UNKNOWN",
+      "image": "logo-light.png"
     }
   ]
 }

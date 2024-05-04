@@ -30,7 +30,6 @@ function Songs() {
         </Button>
       </ButtonContainer>
       <Modal isOpen={showModal} onClose={toggleModal}>
-        {/* Pass CreateSongForm to Modal */}
         <CreateSongForm />
       </Modal>
       <Row>

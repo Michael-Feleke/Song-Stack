@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import toast from "react-hot-toast";
 import SongCard from "../features/Song/SongCard";
+import { getSongs } from "../features/Song/songSlice";
 
 const Container = styled.div`
   display: grid;
@@ -18,6 +19,11 @@ const Container = styled.div`
 
 function Favorites() {
   const { songs, favorites } = useSelector((state) => state.songs);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getSongs());
+  }, [dispatch]);
 
   return (
     <Container>

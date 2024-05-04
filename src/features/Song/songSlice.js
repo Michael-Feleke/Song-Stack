@@ -53,6 +53,9 @@ export const {
   postSongStart,
   postSongSuccess,
   postSongFailure,
+  deleteSongStart,
+  deleteSongSuccess,
+  deleteSongFailure,
 } = songsSlice.actions;
 
 export const getSongs = () => ({ type: "songs/getSongs" });

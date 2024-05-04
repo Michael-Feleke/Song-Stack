@@ -30,7 +30,7 @@ function Songs() {
         </Button>
       </ButtonContainer>
       <Modal isOpen={showModal} onClose={toggleModal}>
-        <CreateSongForm />
+        <CreateSongForm isEditing={false} />
       </Modal>
       <Row>
         <SongContainer />

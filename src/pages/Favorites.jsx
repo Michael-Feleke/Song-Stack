@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import toast from "react-hot-toast";
 import SongCard from "../features/Song/SongCard";
 import { getSongs } from "../features/Song/songSlice";
+import Message from "../ui/Message";
+import Heading from "../ui/Heading";
 
 const Container = styled.div`
   display: grid;
@@ -25,17 +27,23 @@ function Favorites() {
     dispatch(getSongs());
   }, [dispatch]);
 
-  return (
-    <Container>
-      {Object.keys(favorites).length === 0 && <p>No favorites yet!</p>}
-      {songs
-        .filter((song) => favorites[song.id])
-        .map(
-          (song) =>
-            song &&
-            song.id && <SongCard song={song} key={song.id} isFavorite={true} />
-        )}
-    </Container>
+  return Object.keys(favorites).length === 0 ? (
+    <Message>No favorites yet! </Message>
+  ) : (
+    <>
+      <Heading as="h1">Favorites</Heading>
+      <Container>
+        {songs
+          .filter((song) => favorites[song.id])
+          .map(
+            (song) =>
+              song &&
+              song.id && (
+                <SongCard song={song} key={song.id} isFavorite={true} />
+              )
+          )}
+      </Container>
+    </>
   );
 }
 

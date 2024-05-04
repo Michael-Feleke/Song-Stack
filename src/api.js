@@ -42,7 +42,8 @@ export const postCreatedSong = async (song) => {
 
 export const deleteSongById = async (id) => {
   try {
-    await api.delete(`/songs/${id}`);
+    const res = await api.delete(`/songs/${id}`);
+    console.log(res);
   } catch (error) {
     throw new Error("Failed to delete song");
   }

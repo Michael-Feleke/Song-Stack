@@ -1098,6 +1098,16 @@
       "composer": "UNKNOWN",
       "releasedDate": "UNKNOWN",
       "image": "logo-light.png"
+    },
+    {
+      "id": null,
+      "title": "",
+      "artist": "UNKNOWN",
+      "genere": "UNKNOWN",
+      "album": "UNKNOWN",
+      "composer": "UNKNOWN",
+      "releasedDate": "UNKNOWN",
+      "image": "logo-light.png"
     }
   ]
 }

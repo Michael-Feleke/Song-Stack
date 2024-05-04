@@ -2,6 +2,8 @@ import styled from "@emotion/styled";
 import { useState } from "react";
 import Button from "../../ui/Button";
 import { HiMusicalNote } from "react-icons/hi2";
+import { useDispatch } from "react-redux";
+import { postSong } from "./songSlice";
 
 const FormContainer = styled.form`
   display: flex;
@@ -44,13 +46,25 @@ const StyledButton = styled(Button)`
 function CreateSongForm() {
   const [title, setTitle] = useState("");
   const [artist, setArtist] = useState("");
-  const [genre, setGenre] = useState("");
+  const [genere, setGenere] = useState("");
   const [album, setAlbum] = useState("");
   const [composer, setComposer] = useState("");
   const [releasedDate, setReleasedDate] = useState("");
 
+  const dispatch = useDispatch();
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    const song = {
+      title,
+      artist,
+      genere,
+      album,
+      composer,
+      releasedDate,
+      image: "logo-light.png",
+    };
+    dispatch(postSong(song));
   };
 
   return (
@@ -79,8 +93,8 @@ function CreateSongForm() {
         <InputLabel>Genre</InputLabel>
         <InputField
           type="text"
-          value={genre}
-          onChange={(e) => setGenre(e.target.value)}
+          value={genere}
+          onChange={(e) => setGenere(e.target.value)}
           placeholder="Enter genre"
         />
       </InputContainer>

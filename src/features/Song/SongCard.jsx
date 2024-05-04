@@ -77,17 +77,19 @@ const ButtonContainer = styled.div`
 
 function SongCard({ song }) {
   const [isHovered, setIsHovered] = useState(false);
-  const { image, name, releasedDate, artist, album, composer, genere } = song;
+  if (!song) {
+    return null;
+  }
 
+  const { title, releasedDate, artist, album, composer, genere } = song;
   return (
     <CardBox>
       <CardDetail
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <Img src={image} alt={image} />
+        <Img src="logo-light.png" />
         <CardLayer hovered={isHovered}>
-          <Name>{name}</Name>
           <Detail>
             <Span>Artist:</Span> {artist}
           </Detail>
@@ -105,7 +107,7 @@ function SongCard({ song }) {
           </Detail>
         </CardLayer>
       </CardDetail>
-      <Name>{name}</Name>
+      <Name>{title}</Name>
       <ButtonContainer>
         <Button variation="secondary" size="small">
           <HiPencil /> Edit

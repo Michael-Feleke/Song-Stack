@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import SongCard from "./SongCard";
+import { useEffect, useState } from "react";
 
 const Container = styled.div`
   display: grid;
@@ -13,69 +14,15 @@ const Container = styled.div`
   padding: 2rem 0;
 `;
 
-const songs = [
-  {
-    songId: 1,
-    image: "logo-light.png",
-    name: "Tikur Sew",
-    releasedDate: "05/07/2006",
-    artist: "Teddy Aftro",
-    album: "Tikur Sew",
-    composer: "Michael Hailu",
-    genere: "Pop",
-  },
-  {
-    songId: 2,
-    image: "logo-light.png",
-    name: "Tikur Sew",
-    releasedDate: "05/07/2006",
-    artist: "Teddy Aftro",
-    album: "Tikur Sew",
-    composer: "Michael Hailu",
-    genere: "Pop",
-  },
-  {
-    songId: 3,
-    image: "logo-light.png",
-    name: "Tikur Sew",
-    releasedDate: "05/07/2006",
-    artist: "Teddy Aftro",
-    album: "Tikur Sew",
-    composer: "Michael Hailu",
-  },
-  {
-    songId: 4,
-    image: "logo-light.png",
-    name: "Tikur Sew",
-    releasedDate: "05/07/2006",
-    artist: "Teddy Aftro",
-    album: "Tikur Sew",
-    composer: "Michael Hailu",
-    genere: "Pop",
-  },
-  {
-    songId: 5,
-    image: "logo-light.png",
-    name: "Tikur Sew",
-    releasedDate: "05/07/2006",
-    artist: "Teddy Aftro",
-    album: "Tikur Sew",
-    composer: "Michael Hailu",
-    genere: "Pop",
-  },
-  {
-    songId: 6,
-    image: "logo-light.png",
-    name: "Tikur Sew",
-    releasedDate: "05/07/2006",
-    artist: "Teddy Aftro",
-    album: "Tikur Sew",
-    composer: "Michael Hailu",
-    genere: "Pop",
-  },
-];
-
 function SongContainer() {
+  const [songs, setSongs] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:3001/songs")
+      .then((response) => response.json())
+      .then((data) => setSongs(data));
+  }, []);
+
   return (
     <Container>
       {songs.map((song) => (

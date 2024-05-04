@@ -1,6 +1,8 @@
 import styled from "@emotion/styled";
 import SongCard from "./SongCard";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getSongs } from "./songSlice";
 
 const Container = styled.div`
   display: grid;
@@ -15,16 +17,17 @@ const Container = styled.div`
 `;
 
 function SongContainer() {
-  const [songs, setSongs] = useState([]);
+  const { songs, status, error } = useSelector((state) => state.songs);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    fetch("http://localhost:3001/songs")
-      .then((response) => response.json())
-      .then((data) => setSongs(data));
-  }, []);
+    dispatch(getSongs());
+  }, [dispatch]);
 
   return (
     <Container>
+      {status === "loading" && <p>Loading...</p>}
+      {status === "failed" && <p>{error}</p>}
       {songs.map((song) => (
         <SongCard song={song} key={song.songId} />
       ))}

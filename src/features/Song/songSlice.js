@@ -4,7 +4,6 @@ const initialState = {
   songs: [],
   status: "idle",
   error: null,
-  songLoading: {},
 };
 
 const songsSlice = createSlice({
@@ -28,19 +27,19 @@ const songsSlice = createSlice({
     postSongSuccess(state, action) {
       state.status = "succeeded";
       state.songs.push(action.payload);
+      state.status = "idle";
     },
     postSongFailure(state, action) {
       state.status = "failed";
       state.error = action.payload;
     },
-    deleteSongStart(state, action) {
+    deleteSongStart(state) {
       state.status = "loading";
-      state.songLoading[action.payload] = true;
     },
     deleteSongSuccess(state, action) {
       state.status = "succeeded";
       state.songs = state.songs.filter((song) => song.id !== action.payload);
-      delete state.songLoading[action.payload];
+      state.status = "idle";
     },
     deleteSongFailure(state, action) {
       state.status = "failed";

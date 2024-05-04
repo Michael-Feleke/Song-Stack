@@ -101,7 +101,7 @@ function CreateSongForm({
       <CloseContainer>
         <HiXCircle onClick={handleClose} size={30} />
       </CloseContainer>
-      <FormContainer>
+      <FormContainer onSubmit={handleSubmit}>
         <InputContainer>
           <InputLabel>Title</InputLabel>
           <InputField
@@ -162,7 +162,7 @@ function CreateSongForm({
             <Spinnermini /> {isEditing ? "Updating" : "Creating"}
           </Button>
         ) : (
-          <Button type="submit" onClick={handleSubmit}>
+          <Button type="submit" style={{ marginTop: "1rem" }}>
             <HiMusicalNote /> {isEditing ? "Edit" : "Create"} Song
           </Button>
         )}

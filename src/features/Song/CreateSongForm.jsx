@@ -3,7 +3,7 @@ import { useState } from "react";
 import Button from "../../ui/Button";
 import { HiMusicalNote } from "react-icons/hi2";
 import { useDispatch } from "react-redux";
-import { postSong } from "./songSlice";
+import { postSong, updateSong } from "./songSlice";
 
 const FormContainer = styled.form`
   display: flex;
@@ -43,28 +43,33 @@ const StyledButton = styled(Button)`
   margin-top: 1.5rem;
 `;
 
-function CreateSongForm() {
-  const [title, setTitle] = useState("");
-  const [artist, setArtist] = useState("");
-  const [genere, setGenere] = useState("");
-  const [album, setAlbum] = useState("");
-  const [composer, setComposer] = useState("");
-  const [releasedDate, setReleasedDate] = useState("");
+function CreateSongForm({ song = null, isEditing = false }) {
+  const id = isEditing ? song.id : null;
+  const [title, setTitle] = useState(isEditing ? song.title : "");
+  const [artist, setArtist] = useState(isEditing ? song.artist : "");
+  const [genere, setGenere] = useState(isEditing ? song.genere : "");
+  const [album, setAlbum] = useState(isEditing ? song.album : "");
+  const [composer, setComposer] = useState(isEditing ? song.composer : "");
+  const [releasedDate, setReleasedDate] = useState(
+    isEditing ? song.releasedDate : ""
+  );
 
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const song = {
+      id,
       title,
-      artist,
-      genere,
-      album,
-      composer,
-      releasedDate,
+      artist: artist == "" ? "UNKNOWN" : artist,
+      genere: genere == "" ? "UNKNOWN" : genere,
+      album: album == "" ? "UNKNOWN" : album,
+      composer: composer == "" ? "UNKNOWN" : composer,
+      releasedDate: releasedDate == "UNKNOWN" ? "" : releasedDate,
       image: "logo-light.png",
     };
-    dispatch(postSong(song));
+
+    isEditing ? dispatch(updateSong(song)) : dispatch(postSong(song));
   };
 
   return (
@@ -86,7 +91,6 @@ function CreateSongForm() {
           value={artist}
           onChange={(e) => setArtist(e.target.value)}
           placeholder="Enter artist"
-          required
         />
       </InputContainer>
       <InputContainer>
@@ -127,7 +131,7 @@ function CreateSongForm() {
       </InputContainer>
 
       <StyledButton onClick={handleSubmit}>
-        <HiMusicalNote /> Create Song
+        <HiMusicalNote /> {isEditing ? "Edit" : "Create"} Song
       </StyledButton>
     </FormContainer>
   );

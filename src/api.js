@@ -48,6 +48,18 @@ export const deleteSongById = async (id) => {
   }
 };
 
+export const updateSongById = async (id, updatedSong) => {
+  try {
+    await api.put(`/songs/${id}`, updatedSong, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  } catch (error) {
+    throw new Error("Failed to update song");
+  }
+};
+
 export const uploadSongImage = async (file) => {
   try {
     const formData = new FormData();

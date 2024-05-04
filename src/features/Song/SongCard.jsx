@@ -5,6 +5,8 @@ import { HiPencil, HiTrash } from "react-icons/hi";
 import { HiPlayCircle } from "react-icons/hi2";
 import { useDispatch } from "react-redux";
 import { deleteSong } from "./songSlice";
+import Modal from "../../ui/Modal";
+import CreateSongForm from "./CreateSongForm";
 
 const CardBox = styled.div`
   width: 80%;
@@ -81,6 +83,10 @@ function SongCard({ song }) {
   const [isHovered, setIsHovered] = useState(false);
   const { id, title, releasedDate, artist, album, composer, genere } = song;
 
+  const [showModal, setShowModal] = useState(false);
+
+  const toggleModal = () => setShowModal((prev) => !prev);
+
   const dispatch = useDispatch();
 
   if (!song) {
@@ -118,7 +124,7 @@ function SongCard({ song }) {
       </CardDetail>
       <Name>{title}</Name>
       <ButtonContainer>
-        <Button variation="secondary" size="small">
+        <Button onClick={toggleModal} variation="secondary" size="small">
           <HiPencil /> Edit
         </Button>
         <Button variation="primary" size="small">
@@ -128,6 +134,9 @@ function SongCard({ song }) {
           <HiTrash /> Delete
         </Button>
       </ButtonContainer>
+      <Modal isOpen={showModal} onClose={toggleModal}>
+        <CreateSongForm song={song} isEditing={true} />
+      </Modal>
     </CardBox>
   );
 }

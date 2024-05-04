@@ -37,46 +37,56 @@
       "album": "Tikur Sew",
       "composer": "Michael Hailu",
       "genere": "Pop",
-      "id": "2fb4"
-    },
-    {
-      "image": "logo-light.png",
-      "title": "Tikur Sew",
-      "releasedDate": "05/07/2006",
-      "artist": "Teddy Aftro",
-      "album": "Tikur Sew",
-      "composer": "Michael Hailu",
-      "genere": "Pop",
-      "id": "5190"
-    },
-    {
-      "image": "logo-light.png",
-      "title": "Tikur Sew",
-      "releasedDate": "05/07/2006",
-      "artist": "Teddy Aftro",
-      "album": "Tikur Sew",
-      "composer": "Michael Hailu",
-      "genere": "Pop",
       "id": "851c"
     },
     {
-      "id": "1wn8kr8x7",
-      "title": "dfdf",
-      "artist": "dfdfdf",
-      "genere": "dfdfadf",
-      "album": "asdfsdf",
-      "composer": "asdf",
-      "releasedDate": "2024-05-14",
+      "id": "3j7zhgxs3",
+      "title": "lkl",
+      "artist": "UNKNOWN",
+      "genere": "UNKNOWN",
+      "album": "UNKNOWN",
+      "composer": "UNKNOWN",
+      "releasedDate": "UNKNOWN",
       "image": "logo-light.png"
     },
     {
-      "id": "b147",
-      "title": "dfdf",
-      "artist": "dfdfdf",
-      "genere": "dfdfadf",
-      "album": "asdfsdf",
-      "composer": "asdf",
-      "releasedDate": "2024-05-14",
+      "id": "9e2lr9z1a",
+      "title": "Tsedenia",
+      "artist": "miki",
+      "genere": "fjlaskjdf",
+      "album": "UNKNOWN",
+      "composer": "michael hailu",
+      "releasedDate": "",
+      "image": "logo-light.png"
+    },
+    {
+      "id": null,
+      "title": "1",
+      "artist": "UNKNOWN",
+      "genere": "UNKNOWN",
+      "album": "UNKNOWN",
+      "composer": "UNKNOWN",
+      "releasedDate": "UNKNOWN",
+      "image": "logo-light.png"
+    },
+    {
+      "id": null,
+      "title": "1",
+      "artist": "UNKNOWN",
+      "genere": "UNKNOWN",
+      "album": "UNKNOWN",
+      "composer": "UNKNOWN",
+      "releasedDate": "UNKNOWN",
+      "image": "logo-light.png"
+    },
+    {
+      "id": null,
+      "title": "mm",
+      "artist": "UNKNOWN",
+      "genere": "UNKNOWN",
+      "album": "UNKNOWN",
+      "composer": "UNKNOWN",
+      "releasedDate": "",
       "image": "logo-light.png"
     }
   ]

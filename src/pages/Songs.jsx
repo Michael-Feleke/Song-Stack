@@ -14,6 +14,11 @@ const ButtonContainer = styled.div`
   margin: 3rem 0 1rem;
 `;
 
+const Span = styled.span`
+  display: flex;
+  justify-content: center;
+`;
+
 function Songs() {
   const [showModal, setShowModal] = useState(false);
 
@@ -25,12 +30,18 @@ function Songs() {
         <Heading as="h1">All Songs</Heading>
       </Row>
       <ButtonContainer>
-        <Button onClick={toggleModal}>
-          <HiMusicalNote /> Add New Song
-        </Button>
+        <Span>
+          <Button onClick={toggleModal}>
+            <HiMusicalNote /> Add New Song
+          </Button>
+        </Span>
       </ButtonContainer>
       <Modal isOpen={showModal} onClose={toggleModal}>
-        <CreateSongForm isEditing={false} />
+        <CreateSongForm
+          isEditing={false}
+          toggleModal={toggleModal}
+          showModal={showModal}
+        />
       </Modal>
       <Row>
         <SongContainer />

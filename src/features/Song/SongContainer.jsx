@@ -23,8 +23,10 @@ function SongContainer() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getSongs());
-  }, [dispatch]);
+    if (!songs || songs.length === 0) {
+      dispatch(getSongs());
+    }
+  }, [dispatch, songs]);
 
   return (
     <Container>

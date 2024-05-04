@@ -10,6 +10,8 @@ import {
   deleteSongFailure,
   updateSongSuccess,
   updateSongFailure,
+  deleteSongStart,
+  updateSongStart,
 } from "./songSlice";
 import api, {
   deleteSongById,
@@ -43,6 +45,7 @@ function* postSong(action) {
 
 function* deleteSong(action) {
   try {
+    yield put(deleteSongStart());
     const songId = action.payload;
     yield call(deleteSongById, songId, api);
     yield put(deleteSongSuccess());
@@ -54,6 +57,7 @@ function* deleteSong(action) {
 
 function* updateSong(action) {
   try {
+    yield put(updateSongStart());
     const song = action.payload;
     yield call(updateSongById, song.id, song, api);
     yield put(updateSongSuccess(song));

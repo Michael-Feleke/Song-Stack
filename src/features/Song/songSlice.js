@@ -4,7 +4,7 @@ const initialState = {
   songs: [],
   status: "idle",
   error: null,
-  favorites: {},
+  favorites: JSON.parse(localStorage.getItem("favorites")) || {},
 };
 
 const songsSlice = createSlice({
@@ -67,6 +67,11 @@ const songsSlice = createSlice({
         delete state.favorites[songId];
       } else {
         state.favorites[songId] = true;
+      }
+      try {
+        localStorage.setItem("favorites", JSON.stringify(state.favorites));
+      } catch (error) {
+        console.error("Error updating local storage:", error);
       }
     },
   },

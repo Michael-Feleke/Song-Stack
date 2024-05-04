@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "@emotion/styled";
 import Button from "../../ui/Button";
-import { HiPencil, HiTrash } from "react-icons/hi";
+import { HiHeart, HiOutlineHeart, HiPencil, HiTrash } from "react-icons/hi";
 import { HiPlayCircle } from "react-icons/hi2";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteSong } from "./songSlice";
@@ -74,16 +74,18 @@ const Span = styled.span`
 
 const ButtonContainer = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   padding: 1.5rem 1rem 2rem;
+  margin-top: 2rem;
   width: 100%;
 `;
 
 function SongCard({ song }) {
   const [isHovered, setIsHovered] = useState(false);
   const { id, title, releasedDate, artist, album, composer, genere } = song;
-  const [deleteIndex, setDeleteIndex] = useState("");
+
+  const [isHeartClicked, setIsHeartClicked] = useState(false);
 
   const [showModal, setShowModal] = useState(false);
 
@@ -104,9 +106,14 @@ function SongCard({ song }) {
     if (!confirmed) {
       return;
     }
-    setDeleteIndex(id);
     dispatch(deleteSong(id));
+    status === "loading" && toast.loading("Deleting song...");
     status === "succeeded" && toast.success("Song deleted successfully");
+    status === "failed" && toast.error("Failed to delete song");
+  };
+
+  const handleHeart = () => {
+    setIsHeartClicked((cur) => !cur);
   };
 
   return (
@@ -136,24 +143,30 @@ function SongCard({ song }) {
       </CardDetail>
       <Name>{title}</Name>
       <ButtonContainer>
-        <Button onClick={toggleModal} variation="secondary" size="small">
-          <HiPencil /> Edit
-        </Button>
-        <HiPlayCircle size={30} />
-        {status == "loading" && deleteIndex == id ? (
-          <Button
-            disabled
-            style={{ opacity: "0.5" }}
-            variation="danger"
-            size="small"
-          >
-            <Spinnermini /> Deleteing
-          </Button>
+        <HiPencil
+          onClick={toggleModal}
+          size={25}
+          cursor="pointer"
+          color="Green"
+        />
+
+        {isHeartClicked ? (
+          <HiHeart
+            onClick={handleHeart}
+            cursor="pointer"
+            size={25}
+            color="red"
+          />
         ) : (
-          <Button onClick={handleDeleteSong} variation="danger" size="small">
-            <HiTrash /> Delete
-          </Button>
+          <HiOutlineHeart
+            onClick={handleHeart}
+            cursor="pointer"
+            size={25}
+            color="red"
+          />
         )}
+
+        <HiTrash size={25} cursor="pointer" onClick={handleDeleteSong} />
       </ButtonContainer>
       <Modal isOpen={showModal} onClose={toggleModal}>
         <CreateSongForm

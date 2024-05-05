@@ -1,12 +1,9 @@
 import styled from "@emotion/styled";
 import {
-  HiFolder,
-  HiInformationCircle,
   HiOutlineFolder,
   HiOutlineHeart,
   HiOutlineHome,
   HiOutlineInformationCircle,
-  HiOutlineMicrophone,
 } from "react-icons/hi";
 import {
   HiMiniArrowLeftOnRectangle,
@@ -35,7 +32,6 @@ const StyledNavLink = styled(NavLink)`
     transition: all 0.3s;
   }
 
-  /* This works because react-router places the active class on the active NavLink */
   &:hover,
   &:active,
   &.active:link,
@@ -48,7 +44,6 @@ const StyledNavLink = styled(NavLink)`
   & svg {
     width: 2.4rem;
     height: 2.4rem;
-    color: var(--color-grey-400);
     transition: all 0.3s;
   }
 

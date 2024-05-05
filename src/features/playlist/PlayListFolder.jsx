@@ -14,6 +14,7 @@ import { useDispatch } from "react-redux";
 import { deletePlaylist } from "../Song/songSlice";
 import toast from "react-hot-toast";
 import { Navigate, useNavigate } from "react-router-dom";
+import PlaylistSongs from "../../pages/PlaylistSongs";
 
 const H3 = styled.h3`
   font-size: 1.5rem;
@@ -40,13 +41,11 @@ const CardContainer = styled.div`
   height: 200px;
   margin: 1rem;
   background-color: #cbcbcb79;
-  cursor: pointer;
 `;
 
-function PlayListFolder({ playlist }) {
+function PlayListFolder({ playlist, setPlaylistId, setShowSongs }) {
   const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const toggleModal = () => setShowModal((prev) => !prev);
 
@@ -63,12 +62,15 @@ function PlayListFolder({ playlist }) {
   };
 
   const handleOpenPlaylist = () => {
-    navigate(`/playlists/${playlist.id}`);
+    // navigate(`/playlists/${playlist.id}`);
+    // setShowSongs((cur) => !cur);
+    setPlaylistId(playlist.id);
+    setShowSongs((cur) => !cur);
   };
 
   return (
     <CardContainer>
-      <HiFolder size={100} onClick={handleOpenPlaylist} />
+      <HiFolder size={100} onClick={handleOpenPlaylist} cursor="pointer" />
       <H3>{playlist.name}</H3>
       <ButtonContainer>
         <HiPencil
@@ -87,7 +89,7 @@ function PlayListFolder({ playlist }) {
           cursor="pointer"
           onClick={handleDeletePlaylist}
           data-tooltip-id="my-tooltip4"
-          data-tooltip-content="Delete Song"
+          data-tooltip-content="Delete Playlist"
           data-tooltip-place="bottom"
           style={{ outline: "none" }}
         />

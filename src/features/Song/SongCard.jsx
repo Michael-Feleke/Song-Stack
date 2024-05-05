@@ -23,7 +23,7 @@ import { Tooltip } from "react-tooltip";
 import PlaylistContainerForModal from "../playlist/PlaylistContainerForModal";
 
 const CardBox = styled.div`
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
   border-radius: 0.75rem;
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
@@ -51,8 +51,7 @@ const cardLayerStyles = (props) => ({
   justifyContent: "center",
   alignItems: "center",
   height: "100%",
-  background:
-    "linear-gradient(to top, rgba(0, 0, 0, 0.5), var(--color-grey-700))",
+  background: "var(--color-grey-900)",
   transition: "transform 0.5s ease",
 });
 
@@ -68,9 +67,11 @@ const CardDetail = styled.div`
 const Name = styled.h2`
   margin-bottom: 1rem;
   font-size: 1.5rem;
-  font-weight: 500;
+  font-weight: 600;
   text-align: center;
-  margin-top: 1rem;
+  margin-top: 2rem;
+  text-transform: capitalize;
+  letter-spacing: 1px;
 `;
 
 const Detail = styled.p`
@@ -81,7 +82,8 @@ const Detail = styled.p`
 `;
 
 const Span = styled.span`
-  color: orange;
+  color: var(--color-brand-600);
+  font-size: 1.5rem;
 `;
 
 const ButtonContainer = styled.div`
@@ -91,6 +93,8 @@ const ButtonContainer = styled.div`
   padding: 1.5rem 1rem 2rem;
   margin-top: 2rem;
   width: 100%;
+  border-top: 1px solid var(--color-grey-300);
+  background-color: var(--color-grey-200);
 `;
 
 function SongCard({
@@ -150,19 +154,19 @@ function SongCard({
         <Img src="logo-light.png" />
         <CardLayer hovered={isHovered}>
           <Detail>
-            <Span>Artist:</Span> {artist}
+            <Span>Artist :</Span> {artist}
           </Detail>
           <Detail>
-            <Span>Album:</Span> {album}
+            <Span>Album :</Span> {album}
           </Detail>
           <Detail>
-            <Span>Genere:</Span> {genere}
+            <Span>Genre :</Span> {genere}
           </Detail>
           <Detail>
-            <Span>Composer:</Span> {composer}
+            <Span>Composer :</Span> {composer}
           </Detail>
           <Detail>
-            <Span>Released Date: </Span> {releasedDate}
+            <Span>Released Date : </Span> {releasedDate}
           </Detail>
         </CardLayer>
       </CardDetail>
@@ -172,7 +176,7 @@ function SongCard({
           onClick={toggleModal}
           size={25}
           cursor="pointer"
-          color="Green"
+          color="#27ae60"
           data-tooltip-id="my-tooltip"
           data-tooltip-content="Edit Song"
           data-tooltip-place="bottom"
@@ -214,6 +218,7 @@ function SongCard({
         {isFavorite ? (
           <>
             <HiPlusCircle
+              color="#000"
               size={25}
               cursor="pointer"
               onClick={toggleModal2}
@@ -223,6 +228,7 @@ function SongCard({
               style={{ outline: "none" }}
             />
             <HiTrash
+              color="#000"
               size={25}
               cursor="pointer"
               onClick={() => dispatch(toggleFavorite({ songId: id }))}
@@ -236,6 +242,7 @@ function SongCard({
         ) : isInPlaylist ? (
           <>
             <HiTrash
+              color="#000"
               size={25}
               cursor="pointer"
               onClick={() =>
@@ -256,6 +263,7 @@ function SongCard({
         ) : (
           <>
             <HiPlusCircle
+              color="#000"
               size={25}
               cursor="pointer"
               onClick={toggleModal2}
@@ -266,6 +274,7 @@ function SongCard({
             />
             <Tooltip id="my-tooltip5" />
             <HiTrash
+              color="#000"
               size={25}
               cursor="pointer"
               onClick={handleDeleteSong}

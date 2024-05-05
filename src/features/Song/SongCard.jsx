@@ -10,7 +10,11 @@ import {
 } from "react-icons/hi";
 import { HiPlayCircle } from "react-icons/hi2";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteSong, toggleFavorite } from "./songSlice";
+import {
+  deleteSong,
+  removeSongFromPlaylist,
+  toggleFavorite,
+} from "./songSlice";
 import Modal from "../../ui/Modal";
 import CreateSongForm from "./CreateSongForm";
 import Spinnermini from "../../ui/Spinnermini";
@@ -89,7 +93,12 @@ const ButtonContainer = styled.div`
   width: 100%;
 `;
 
-function SongCard({ song, isFavorite = false }) {
+function SongCard({
+  song,
+  isFavorite = false,
+  isInPlaylist = false,
+  playlist,
+}) {
   const { status, favorites } = useSelector((state) => state.songs);
   const { id, title, releasedDate, artist, album, composer, genere } = song;
   const [isHovered, setIsHovered] = useState(false);
@@ -204,12 +213,41 @@ function SongCard({ song, isFavorite = false }) {
         )}
         {isFavorite ? (
           <>
+            <HiPlusCircle
+              size={25}
+              cursor="pointer"
+              onClick={toggleModal2}
+              data-tooltip-id="my-tooltip5"
+              data-tooltip-content="Add to playlist"
+              data-tooltip-place="bottom"
+              style={{ outline: "none" }}
+            />
             <HiTrash
               size={25}
               cursor="pointer"
               onClick={() => dispatch(toggleFavorite({ songId: id }))}
               data-tooltip-id="my-tooltip3"
               data-tooltip-content="Remove from favorites"
+              data-tooltip-place="bottom"
+              style={{ outline: "none" }}
+            />
+            <Tooltip id="my-tooltip3" />
+          </>
+        ) : isInPlaylist ? (
+          <>
+            <HiTrash
+              size={25}
+              cursor="pointer"
+              onClick={() =>
+                dispatch(
+                  removeSongFromPlaylist({
+                    songId: id,
+                    playlistId: playlist.id,
+                  })
+                )
+              }
+              data-tooltip-id="my-tooltip3"
+              data-tooltip-content="Remove from playlist"
               data-tooltip-place="bottom"
               style={{ outline: "none" }}
             />

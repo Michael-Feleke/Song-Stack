@@ -27,9 +27,17 @@ const CardContainer = styled.div`
 function PlayListFolderForModal({ playlist, song, toggleModal }) {
   const dispatch = useDispatch();
   const handleAddToPlaylist = () => {
-    dispatch(addSongToPlaylist({ playlistId: playlist.id, songId: song.id }));
-    toast.success("Song added to playlist");
-    toggleModal();
+    const isSongInPlaylist = playlist.songs.some(
+      (playlistSong) => playlistSong.id === song.id
+    );
+
+    if (isSongInPlaylist) {
+      toast.error("Song already exists in playlist");
+    } else {
+      dispatch(addSongToPlaylist({ playlistId: playlist.id, songId: song.id }));
+      toast.success("Song added to playlist");
+      toggleModal();
+    }
   };
 
   return (

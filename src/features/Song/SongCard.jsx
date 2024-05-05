@@ -251,9 +251,8 @@ function SongCard({ song, isFavorite = false }) {
       <Modal isOpen={showModal2} onClose={toggleModal2}>
         <PlaylistContainerForModal
           toggleModal={toggleModal2}
-          // showModal={showModal}
-          // song={song}
-          // isEditing={true}
+          showModal={showModal}
+          song={song}
         />
       </Modal>
     </CardBox>

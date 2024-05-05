@@ -14,7 +14,6 @@ const Container = styled.div`
   height: 500px;
   overflow-y: scroll;
   gap: 7rem;
-  align-items: center;
   position: relative;
   border-radius: 2rem;
   box-shadow: 0 0 1rem var(--bg-color);
@@ -27,7 +26,7 @@ const CloseContainer = styled.div`
   cursor: pointer;
 `;
 
-function PlaylistContainerForModal({ toggleModal }) {
+function PlaylistContainerForModal({ toggleModal, showModal, song }) {
   const { playlists } = useSelector((state) => state.songs);
 
   return (
@@ -44,6 +43,8 @@ function PlaylistContainerForModal({ toggleModal }) {
             <PlayListFolderForModal
               key={playlist.id}
               playlist={playlist}
+              song={song}
+              toggleModal={toggleModal}
             ></PlayListFolderForModal>
           ))}
       </Container>

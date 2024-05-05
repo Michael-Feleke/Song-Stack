@@ -93,6 +93,17 @@ const songsSlice = createSlice({
         (playlist) => playlist.id !== id
       );
     },
+    addSongToPlaylist(state, action) {
+      const { playlistId, songId } = action.payload;
+      const playlist = state.playlists.find(
+        (playlist) => playlist.id === playlistId
+      );
+      const song = state.songs.find((song) => song.id === songId);
+      console.log(playlist);
+      if (playlist) {
+        playlist.songs.push(song);
+      }
+    },
   },
 });
 
@@ -113,6 +124,7 @@ export const {
   createPlaylist,
   updatePlaylistName,
   deletePlaylist,
+  addSongToPlaylist,
 } = songsSlice.actions;
 
 export const getSongs = () => ({ type: "songs/getSongs" });

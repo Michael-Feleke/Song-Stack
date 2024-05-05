@@ -3,7 +3,7 @@ import Button from "../../ui/Button";
 import { useState } from "react";
 import { HiXCircle } from "react-icons/hi";
 import { useDispatch, useSelector } from "react-redux";
-import { createPlaylist } from "../Song/songSlice";
+import { createPlaylist, updatePlaylistName } from "../Song/songSlice";
 import toast from "react-hot-toast";
 
 const FormContainer = styled.form`
@@ -46,8 +46,15 @@ const CloseContainer = styled.div`
   cursor: pointer;
 `;
 
-function CreatePlaylistForm({ toggleModal, showModal }) {
-  const [playlistName, setPlaylistName] = useState("");
+function CreatePlaylistForm({
+  isEditing = false,
+  toggleModal,
+  showModal,
+  playlist = null,
+}) {
+  const [playlistName, setPlaylistName] = useState(
+    isEditing ? playlist.name : ""
+  );
   const playlists = useSelector((state) => state.songs.playlists);
   const dispatch = useDispatch();
 
@@ -57,16 +64,18 @@ function CreatePlaylistForm({ toggleModal, showModal }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (playlists.some((playlist) => playlist.name === playlistName)) {
+    if (playlists.some((p) => p.name === playlistName)) {
       toast.error("Playlist already exists");
       return;
     }
-    const playlist = {
-      id: generateId(),
-      name: playlistName,
-      songs: [],
-    };
-    dispatch(createPlaylist(playlist));
+    const playlistId = isEditing ? playlist.id : generateId();
+    const payload = { id: playlistId, name: playlistName };
+    isEditing
+      ? dispatch(updatePlaylistName(payload))
+      : dispatch(createPlaylist({ ...payload, songs: [] }));
+    isEditing
+      ? toast.success("Playlist updated successfully")
+      : toast.success("Playlist created successfully");
     setPlaylistName("");
     toggleModal();
   };
@@ -89,7 +98,7 @@ function CreatePlaylistForm({ toggleModal, showModal }) {
           />
         </InputContainer>
         <Button type="submit" size="small">
-          Create
+          {isEditing ? "Update Playlist" : "Create Playlist"}
         </Button>
       </FormContainer>
     </>

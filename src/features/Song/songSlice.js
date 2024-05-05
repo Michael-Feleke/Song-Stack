@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { get } from "styled-system";
 
 const initialState = {
   songs: [],
@@ -78,6 +79,22 @@ const songsSlice = createSlice({
     createPlaylist(state, action) {
       state.playlists.push(action.payload);
     },
+    updatePlaylistName(state, action) {
+      const { id, name } = action.payload;
+      const index = state.playlists.findIndex((playlist) => playlist.id === id);
+
+      console.log(index);
+      console.log(name);
+      if (index !== -1) {
+        state.playlists[index].name = name;
+      }
+    },
+    deletePlaylist(state, action) {
+      const { id } = action.payload;
+      state.playlists = state.playlists.filter(
+        (playlist) => playlist.id !== id
+      );
+    },
   },
 });
 
@@ -96,6 +113,8 @@ export const {
   updateSongFailure,
   toggleFavorite,
   createPlaylist,
+  updatePlaylistName,
+  deletePlaylist,
 } = songsSlice.actions;
 
 export const getSongs = () => ({ type: "songs/getSongs" });

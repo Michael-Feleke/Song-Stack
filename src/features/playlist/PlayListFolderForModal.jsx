@@ -1,5 +1,8 @@
 import { HiFolder } from "react-icons/hi";
 import styled from "@emotion/styled";
+import { addSongToPlaylist } from "../Song/songSlice";
+import { useDispatch } from "react-redux";
+import toast from "react-hot-toast";
 
 const H3 = styled.h3`
   font-size: 1.5rem;
@@ -21,9 +24,16 @@ const CardContainer = styled.div`
   cursor: pointer;
 `;
 
-function PlayListFolderForModal({ playlist }) {
+function PlayListFolderForModal({ playlist, song, toggleModal }) {
+  const dispatch = useDispatch();
+  const handleAddToPlaylist = () => {
+    dispatch(addSongToPlaylist({ playlistId: playlist.id, songId: song.id }));
+    toast.success("Song added to playlist");
+    toggleModal();
+  };
+
   return (
-    <CardContainer>
+    <CardContainer onClick={handleAddToPlaylist}>
       <HiFolder size={50} cursor="pointer" />
       <H3>{playlist.name}</H3>
     </CardContainer>

@@ -13,6 +13,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { deletePlaylist } from "../Song/songSlice";
 import toast from "react-hot-toast";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const H3 = styled.h3`
   font-size: 1.5rem;
@@ -45,6 +46,7 @@ const CardContainer = styled.div`
 function PlayListFolder({ playlist }) {
   const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const toggleModal = () => setShowModal((prev) => !prev);
 
@@ -60,9 +62,13 @@ function PlayListFolder({ playlist }) {
     toast.success("Playlist deleted successfully");
   };
 
+  const handleOpenPlaylist = () => {
+    navigate(`/playlists/${playlist.id}`);
+  };
+
   return (
     <CardContainer>
-      <HiFolder size={100} />
+      <HiFolder size={100} onClick={handleOpenPlaylist} />
       <H3>{playlist.name}</H3>
       <ButtonContainer>
         <HiPencil

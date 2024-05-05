@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { HiArrowLeft } from "react-icons/hi";
 import { HiArrowLeftCircle } from "react-icons/hi2";
 import { useDispatch, useSelector } from "react-redux";
@@ -6,6 +6,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { getSongs } from "../features/Song/songSlice";
 import SongCard from "../features/Song/SongCard";
 import styled from "@emotion/styled";
+import Playlists from "./Playlists";
 
 const Container = styled.div`
   display: grid;
@@ -19,9 +20,9 @@ const Container = styled.div`
   padding: 2rem 0;
 `;
 
-function PlaylistSongs() {
-  const { id } = useParams();
-  const navigate = useNavigate();
+function PlaylistSongs({ id }) {
+  // const { id } = useParams();
+  const [backtoPlaylists, setBacktoPlaylists] = useState(false);
 
   const songs = useSelector((state) => state.songs.songs);
   const playlist = useSelector((state) =>
@@ -37,18 +38,29 @@ function PlaylistSongs() {
     }
   }, [dispatch, songs]);
 
-  const handleGoBack = () => {
-    navigate(-1);
-  };
-
-  return (
+  return backtoPlaylists ? (
+    <Playlists />
+  ) : (
     <div>
-      <HiArrowLeftCircle size={30} cursor="pointer" onClick={handleGoBack}>
+      <HiArrowLeftCircle
+        size={30}
+        cursor="pointer"
+        onClick={() => setBacktoPlaylists((cur) => !cur)}
+      >
         Go Back
       </HiArrowLeftCircle>
       <Container>
         {songsInPlaylist?.map(
-          (song) => song && song.id && <SongCard song={song} key={song.id} />
+          (song) =>
+            song &&
+            song.id && (
+              <SongCard
+                song={song}
+                key={song.id}
+                isInPlaylist={true}
+                playlist={playlist}
+              />
+            )
         )}
       </Container>
     </div>

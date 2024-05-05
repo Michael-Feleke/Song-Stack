@@ -1,6 +1,7 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import PlayListFolder from "./PlayListFolder";
 import styled from "@emotion/styled";
+import { useEffect } from "react";
 
 const Container = styled.div`
   display: flex;
@@ -16,7 +17,6 @@ const Container = styled.div`
 
 function PlaylistContainer() {
   const { playlists } = useSelector((state) => state.songs);
-  console.log(playlists);
 
   return (
     <Container>

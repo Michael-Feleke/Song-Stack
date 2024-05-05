@@ -7,6 +7,12 @@ import {
 } from "react-icons/hi";
 import styled from "@emotion/styled";
 import { Tooltip } from "react-tooltip";
+import CreatePlaylistForm from "./CreatePlaylistForm";
+import Modal from "../../ui/Modal";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { deletePlaylist } from "../Song/songSlice";
+import toast from "react-hot-toast";
 
 const H3 = styled.h3`
   font-size: 1.5rem;
@@ -37,14 +43,31 @@ const CardContainer = styled.div`
 `;
 
 function PlayListFolder({ playlist }) {
+  const [showModal, setShowModal] = useState(false);
+  const dispatch = useDispatch();
+
+  const toggleModal = () => setShowModal((prev) => !prev);
+
+  const handleDeletePlaylist = () => {
+    const confirmed = window.confirm(
+      "Are you sure you want to delete this playlist?"
+    );
+    if (!confirmed) {
+      return;
+    }
+    dispatch(deletePlaylist({ id: playlist.id }));
+
+    toast.success("Playlist deleted successfully");
+  };
+
   return (
     <CardContainer>
       <HiFolder size={100} />
       <H3>{playlist.name}</H3>
       <ButtonContainer>
         <HiPencil
-          // onClick={toggleModal}
-          size={15}
+          onClick={toggleModal}
+          size={20}
           cursor="pointer"
           color="Green"
           data-tooltip-id="my-tooltip"
@@ -54,9 +77,9 @@ function PlayListFolder({ playlist }) {
         />
         <Tooltip id="my-tooltip" />
         <HiTrash
-          size={15}
+          size={20}
           cursor="pointer"
-          // onClick={handleDeleteSong}
+          onClick={handleDeletePlaylist}
           data-tooltip-id="my-tooltip4"
           data-tooltip-content="Delete Song"
           data-tooltip-place="bottom"
@@ -64,6 +87,14 @@ function PlayListFolder({ playlist }) {
         />
         <Tooltip id="my-tooltip4" />
       </ButtonContainer>
+      <Modal isOpen={showModal} onClose={toggleModal}>
+        <CreatePlaylistForm
+          toggleModal={toggleModal}
+          showModal={showModal}
+          playlist={playlist}
+          isEditing={true}
+        />
+      </Modal>
     </CardContainer>
   );
 }

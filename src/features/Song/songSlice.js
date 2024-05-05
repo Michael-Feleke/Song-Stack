@@ -5,6 +5,7 @@ const initialState = {
   status: "idle",
   error: null,
   favorites: JSON.parse(localStorage.getItem("favorites")) || {},
+  playlists: [],
 };
 
 const songsSlice = createSlice({
@@ -74,6 +75,9 @@ const songsSlice = createSlice({
         console.error("Error updating local storage:", error);
       }
     },
+    createPlaylist(state, action) {
+      state.playlists.push(action.payload);
+    },
   },
 });
 
@@ -91,6 +95,7 @@ export const {
   updateSongSuccess,
   updateSongFailure,
   toggleFavorite,
+  createPlaylist,
 } = songsSlice.actions;
 
 export const getSongs = () => ({ type: "songs/getSongs" });

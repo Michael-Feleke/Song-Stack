@@ -5,14 +5,14 @@ function GlobalStyles() {
     <Global
       styles={css`
         :root {
-          --color-brand-50: #eef2ff;
-          --color-brand-100: #e0e7ff;
-          --color-brand-200: #c7d2fe;
-          --color-brand-500: #6366f1;
-          --color-brand-600: #4f46e5;
-          --color-brand-700: #4338ca;
-          --color-brand-800: #3730a3;
-          --color-brand-900: #312e81;
+          --color-brand-50: #e5f7e1; /* Lightest */
+          --color-brand-100: #b7e7bd;
+          --color-brand-200: #8ad69a;
+          --color-brand-600: #27ae60; /* Primary */
+          --color-brand-500: #27ae60; /* Primary */
+          --color-brand-700: #1b8647;
+          --color-brand-800: #166f3b;
+          --color-brand-900: #125a32; /* Darkest */
 
           --color-grey-0: #fff;
           --color-grey-50: #f9fafb;

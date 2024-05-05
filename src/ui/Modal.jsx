@@ -12,6 +12,7 @@ const ModalOverlay = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  overflow-y: scroll;
 `;
 
 const ModalContent = styled.div`

@@ -8,6 +8,7 @@ import PageNotFound from "./pages/PageNotFound";
 import GlobalStyles from "./styles/GlobalStyles";
 import AppLayout from "./ui/AppLayout";
 import { Toaster } from "react-hot-toast";
+import PlaylistSongs from "./pages/PlaylistSongs";
 
 function App() {
   return (
@@ -21,6 +22,8 @@ function App() {
             <Route path="songs" element={<Songs />} />
             <Route path="favorites" element={<Favorites />} />
             <Route path="playlists" element={<Playlists />} />
+            <Route path="playlists/:id" element={<PlaylistSongs />} />
+
             <Route path="about" element={<About />} />
           </Route>
 

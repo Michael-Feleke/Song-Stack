@@ -83,8 +83,6 @@ const songsSlice = createSlice({
       const { id, name } = action.payload;
       const index = state.playlists.findIndex((playlist) => playlist.id === id);
 
-      console.log(index);
-      console.log(name);
       if (index !== -1) {
         state.playlists[index].name = name;
       }

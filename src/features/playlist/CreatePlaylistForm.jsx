@@ -2,6 +2,9 @@ import styled from "@emotion/styled";
 import Button from "../../ui/Button";
 import { useState } from "react";
 import { HiXCircle } from "react-icons/hi";
+import { useDispatch, useSelector } from "react-redux";
+import { createPlaylist } from "../Song/songSlice";
+import toast from "react-hot-toast";
 
 const FormContainer = styled.form`
   display: flex;
@@ -45,9 +48,25 @@ const CloseContainer = styled.div`
 
 function CreatePlaylistForm({ toggleModal, showModal }) {
   const [playlistName, setPlaylistName] = useState("");
+  const playlists = useSelector((state) => state.songs.playlists);
+  const dispatch = useDispatch();
+
+  function generateId() {
+    return Math.random().toString(36).substr(2, 9);
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (playlists.some((playlist) => playlist.name === playlistName)) {
+      toast.error("Playlist already exists");
+      return;
+    }
+    const playlist = {
+      id: generateId(),
+      name: playlistName,
+      songs: [],
+    };
+    dispatch(createPlaylist(playlist));
     setPlaylistName("");
     toggleModal();
   };

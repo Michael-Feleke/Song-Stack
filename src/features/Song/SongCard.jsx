@@ -1,7 +1,13 @@
 import { useState } from "react";
 import styled from "@emotion/styled";
 import Button from "../../ui/Button";
-import { HiHeart, HiOutlineHeart, HiPencil, HiTrash } from "react-icons/hi";
+import {
+  HiHeart,
+  HiOutlineHeart,
+  HiPencil,
+  HiPlusCircle,
+  HiTrash,
+} from "react-icons/hi";
 import { HiPlayCircle } from "react-icons/hi2";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteSong, toggleFavorite } from "./songSlice";
@@ -10,6 +16,7 @@ import CreateSongForm from "./CreateSongForm";
 import Spinnermini from "../../ui/Spinnermini";
 import toast from "react-hot-toast";
 import { Tooltip } from "react-tooltip";
+import PlaylistContainerForModal from "../playlist/PlaylistContainerForModal";
 
 const CardBox = styled.div`
   width: 80%;
@@ -94,6 +101,9 @@ function SongCard({ song, isFavorite = false }) {
   const [showModal, setShowModal] = useState(false);
 
   const toggleModal = () => setShowModal((prev) => !prev);
+  const [showModal2, setShowModal2] = useState(false);
+
+  const toggleModal2 = () => setShowModal2((prev) => !prev);
 
   const dispatch = useDispatch();
 
@@ -207,6 +217,16 @@ function SongCard({ song, isFavorite = false }) {
           </>
         ) : (
           <>
+            <HiPlusCircle
+              size={25}
+              cursor="pointer"
+              onClick={toggleModal2}
+              data-tooltip-id="my-tooltip5"
+              data-tooltip-content="Add to playlist"
+              data-tooltip-place="bottom"
+              style={{ outline: "none" }}
+            />
+            <Tooltip id="my-tooltip5" />
             <HiTrash
               size={25}
               cursor="pointer"
@@ -226,6 +246,14 @@ function SongCard({ song, isFavorite = false }) {
           showModal={showModal}
           song={song}
           isEditing={true}
+        />
+      </Modal>
+      <Modal isOpen={showModal2} onClose={toggleModal2}>
+        <PlaylistContainerForModal
+          toggleModal={toggleModal2}
+          // showModal={showModal}
+          // song={song}
+          // isEditing={true}
         />
       </Modal>
     </CardBox>

@@ -6,7 +6,7 @@ const initialState = {
   status: "idle",
   error: null,
   favorites: JSON.parse(localStorage.getItem("favorites")) || {},
-  playlists: [],
+  playlists: JSON.parse(localStorage.getItem("playlists")) || [],
 };
 
 const songsSlice = createSlice({
@@ -78,6 +78,11 @@ const songsSlice = createSlice({
     },
     createPlaylist(state, action) {
       state.playlists.push(action.payload);
+      try {
+        localStorage.setItem("playlists", JSON.stringify(state.playlists));
+      } catch (error) {
+        console.error("Error updating local storage:", error);
+      }
     },
     updatePlaylistName(state, action) {
       const { id, name } = action.payload;
@@ -92,6 +97,11 @@ const songsSlice = createSlice({
       state.playlists = state.playlists.filter(
         (playlist) => playlist.id !== id
       );
+      try {
+        localStorage.setItem("playlists", JSON.stringify(state.playlists));
+      } catch (error) {
+        console.error("Error updating local storage:", error);
+      }
     },
     addSongToPlaylist(state, action) {
       const { playlistId, songId } = action.payload;
@@ -102,6 +112,31 @@ const songsSlice = createSlice({
       console.log(playlist);
       if (playlist) {
         playlist.songs.push(song);
+      }
+      try {
+        localStorage.setItem("playlists", JSON.stringify(state.playlists));
+      } catch (error) {
+        console.error("Error updating local storage:", error);
+      }
+      try {
+        localStorage.setItem("songs", JSON.stringify(state.songs));
+      } catch (error) {
+        console.error("Error updating local storage:", error);
+      }
+    },
+    removeSongFromPlaylist(state, action) {
+      const { playlistId, songId } = action.payload;
+      const playlist = state.playlists.find(
+        (playlist) => playlist.id === playlistId
+      );
+      if (playlist) {
+        playlist.songs = playlist.songs.filter((song) => song.id !== songId);
+      }
+
+      try {
+        localStorage.setItem("playlists", JSON.stringify(state.playlists));
+      } catch (error) {
+        console.error("Error updating local storage:", error);
       }
     },
   },
@@ -125,6 +160,7 @@ export const {
   updatePlaylistName,
   deletePlaylist,
   addSongToPlaylist,
+  removeSongFromPlaylist,
 } = songsSlice.actions;
 
 export const getSongs = () => ({ type: "songs/getSongs" });

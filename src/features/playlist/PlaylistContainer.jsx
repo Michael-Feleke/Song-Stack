@@ -15,9 +15,7 @@ const Container = styled.div`
   padding: 2rem 0;
 `;
 
-function PlaylistContainer() {
-  const { playlists } = useSelector((state) => state.songs);
-
+function PlaylistContainer({ playlists, setShowSongs, setPlaylistId }) {
   return (
     <Container>
       {playlists &&
@@ -25,6 +23,8 @@ function PlaylistContainer() {
           <PlayListFolder
             key={playlist.id}
             playlist={playlist}
+            setPlaylistId={setPlaylistId}
+            setShowSongs={setShowSongs}
           ></PlayListFolder>
         ))}
     </Container>

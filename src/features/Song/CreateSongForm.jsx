@@ -86,7 +86,9 @@ function CreateSongForm({
       image: "logo-light.png",
     };
 
-    isEditing ? dispatch(updateSong(songNew)) : dispatch(postSong(songNew));
+    isEditing
+      ? dispatch(updateSong({ songNew, id }))
+      : dispatch(postSong(songNew));
     status === "succeeded" &&
       toast.success(
         ` ${

@@ -19,6 +19,7 @@ import PlaylistSongs from "../../pages/PlaylistSongs";
 const H3 = styled.h3`
   font-size: 1.5rem;
   text-align: center;
+  color: var(--color-grey-900);
 `;
 
 const ButtonContainer = styled.div`
@@ -30,7 +31,7 @@ const ButtonContainer = styled.div`
 `;
 
 const CardContainer = styled.div`
-  border: 1px solid #ddd;
+  border: 1px solid var(--color-grey-500);
   border-radius: 6px;
   padding: 1rem;
   display: flex;
@@ -40,7 +41,7 @@ const CardContainer = styled.div`
   width: 200px;
   height: 200px;
   margin: 1rem;
-  background-color: #cbcbcb79;
+  background-color: var(--color-grey-100);
 `;
 
 function PlayListFolder({ playlist, setPlaylistId, setShowSongs }) {
@@ -91,6 +92,7 @@ function PlayListFolder({ playlist, setPlaylistId, setShowSongs }) {
         <Tooltip id="my-tooltip" />
         <HiTrash
           size={20}
+          color="var(--color-grey-900)"
           cursor="pointer"
           onClick={handleDeletePlaylist}
           data-tooltip-id="my-tooltip4"

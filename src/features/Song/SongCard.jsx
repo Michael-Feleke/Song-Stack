@@ -26,7 +26,7 @@ const CardBox = styled.div`
   width: 90%;
   margin: 0 auto;
   border-radius: 0.75rem;
-  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 1rem var(--color-grey-300);
 `;
 
 const Img = styled.img`
@@ -51,7 +51,7 @@ const cardLayerStyles = (props) => ({
   justifyContent: "center",
   alignItems: "center",
   height: "100%",
-  background: "var(--color-grey-900)",
+  background: "#18212f",
   transition: "transform 0.5s ease",
 });
 
@@ -77,7 +77,7 @@ const Name = styled.h2`
 const Detail = styled.p`
   font-size: 1.2rem;
   margin: 0.3rem 0 1rem;
-  color: white;
+  color: #f3f4f6;
   width: 200px;
 `;
 
@@ -218,7 +218,7 @@ function SongCard({
         {isFavorite ? (
           <>
             <HiPlusCircle
-              color="#000"
+              color="var(--color-grey-900)"
               size={25}
               cursor="pointer"
               onClick={toggleModal2}
@@ -228,7 +228,7 @@ function SongCard({
               style={{ outline: "none" }}
             />
             <HiTrash
-              color="#000"
+              color="var(--color-grey-900)"
               size={25}
               cursor="pointer"
               onClick={() => dispatch(toggleFavorite({ songId: id }))}
@@ -242,7 +242,7 @@ function SongCard({
         ) : isInPlaylist ? (
           <>
             <HiTrash
-              color="#000"
+              color="var(--color-grey-900)"
               size={25}
               cursor="pointer"
               onClick={() =>
@@ -263,7 +263,7 @@ function SongCard({
         ) : (
           <>
             <HiPlusCircle
-              color="#000"
+              color="var(--color-grey-900)"
               size={25}
               cursor="pointer"
               onClick={toggleModal2}
@@ -274,7 +274,7 @@ function SongCard({
             />
             <Tooltip id="my-tooltip5" />
             <HiTrash
-              color="#000"
+              color="var(--color-grey-900)"
               size={25}
               cursor="pointer"
               onClick={handleDeleteSong}

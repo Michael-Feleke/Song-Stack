@@ -10,7 +10,8 @@ import Heading from "../ui/Heading";
 const Container = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
+  grid-column-gap: 7rem;
+  grid-row-gap: 5rem;
   align-items: center;
   position: relative;
   overflow: hidden;
@@ -27,11 +28,13 @@ function Favorites() {
     dispatch(getSongs());
   }, [dispatch]);
 
-  return Object.keys(favorites).length === 0 ? (
-    <Message>No favorites yet! </Message>
-  ) : (
+  return (
     <>
-      <Heading as="h1">Favorites</Heading>
+      <Heading as="h1">
+        {Object.keys(favorites).length == 1
+          ? "No favoites yet"
+          : "Your Favorites"}
+      </Heading>
       <Container>
         {songs
           .filter((song) => favorites[song.id])

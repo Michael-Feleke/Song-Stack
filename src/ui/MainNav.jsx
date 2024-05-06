@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import { Badge } from "@mui/material";
 import {
   HiOutlineFolder,
   HiOutlineHeart,
@@ -56,6 +55,20 @@ const StyledNavLink = styled(NavLink)`
     color: var(--color-brand-600);
   }
 `;
+const BadgeContainer = styled.div`
+  background-color: var(--color-brand-600);
+  color: white;
+  border-radius: 9999px;
+  height: 17px;
+  width: 17px;
+  padding: 0 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  position: relative;
+  top: 1;
+`;
 
 function MainNav() {
   const { songs, favorites, playlists } = useSelector((state) => state.songs);
@@ -63,8 +76,6 @@ function MainNav() {
   const playlistNumber = Object.keys(playlists).length;
   const songsNumber = Object.keys(songs).length;
   const favoritesNumber = Object.keys(favorites).length;
-
-  console.log(favorites);
 
   return (
     <nav>
@@ -77,26 +88,35 @@ function MainNav() {
         </li>
         <li>
           <StyledNavLink to="/songs">
-            <Badge badgeContent={songsNumber} color="#27ae60">
-              <HiMusicalNote />
-              <span>Songs</span>
-            </Badge>
+            <HiMusicalNote />
+            <span>Songs</span>
+            {songsNumber > 0 && (
+              <BadgeContainer>
+                <p>{songsNumber}</p>
+              </BadgeContainer>
+            )}
           </StyledNavLink>
         </li>
         <li>
           <StyledNavLink to="/favorites">
-            <Badge badgeContent={favoritesNumber} color="#27ae60">
-              <HiOutlineHeart />
-              <span>Favorites</span>
-            </Badge>
+            <HiOutlineHeart />
+            <span>Favorites</span>
+            {favoritesNumber > 0 && (
+              <BadgeContainer>
+                <p>{favoritesNumber}</p>
+              </BadgeContainer>
+            )}
           </StyledNavLink>
         </li>
         <li>
           <StyledNavLink to="/playlists">
-            <Badge badgeContent={playlistNumber} color="#27ae60">
-              <HiOutlineFolder />
-              <span>Playlists</span>
-            </Badge>
+            <HiOutlineFolder />
+            <span>Playlists</span>
+            {playlistNumber > 0 && (
+              <BadgeContainer>
+                <p>{playlistNumber}</p>
+              </BadgeContainer>
+            )}
           </StyledNavLink>
         </li>
         <li>

@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { get } from "styled-system";
 
 const initialState = {
   songs: [],

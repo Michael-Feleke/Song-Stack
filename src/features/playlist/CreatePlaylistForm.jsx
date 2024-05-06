@@ -83,7 +83,7 @@ function CreatePlaylistForm({
   return (
     <>
       <CloseContainer>
-        <HiXCircle onClick={toggleModal} size={30} />
+        <HiXCircle onClick={toggleModal} size={30} color="red" />
       </CloseContainer>
       <FormContainer onSubmit={handleSubmit}>
         <InputContainer>

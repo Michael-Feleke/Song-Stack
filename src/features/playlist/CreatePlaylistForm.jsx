@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import Button from "../../ui/Button";
 import { useState } from "react";
-import { HiXCircle } from "react-icons/hi";
+import { HiFolderAdd, HiPencil, HiXCircle } from "react-icons/hi";
 import { useDispatch, useSelector } from "react-redux";
 import { createPlaylist, updatePlaylistName } from "../Song/songSlice";
 import toast from "react-hot-toast";
@@ -97,7 +97,8 @@ function CreatePlaylistForm({
             required
           />
         </InputContainer>
-        <Button type="submit" size="small">
+        <Button type="submit">
+          {isEditing ? <HiPencil /> : <HiFolderAdd />}
           {isEditing ? "Update Playlist" : "Create Playlist"}
         </Button>
       </FormContainer>

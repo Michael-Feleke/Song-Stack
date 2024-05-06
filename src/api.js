@@ -1,76 +1,55 @@
 import axios from "axios";
+import supabase from "./supabase";
 
-const BASE_URL = "http://localhost:3001";
+const BASE_URL = "https://michael-feleke.github.io/host_api";
 
 const api = axios.create({
   baseURL: BASE_URL,
 });
 
-function generateId() {
-  return Math.random().toString(36).substr(2, 9);
-}
-
 export const fetchSongs = async () => {
-  try {
-    const response = await api.get("/songs");
-    return response.data;
-  } catch (error) {
-    throw new Error("Failed to fetch songs");
+  let { data, error } = await supabase.from("songs").select("*");
+
+  if (error) {
+    console.error(error);
+    throw new Error("Songs could not be fetched");
   }
+
+  return data;
 };
 
 export const postCreatedSong = async (song) => {
-  try {
-    await api.post(
-      "/songs",
-      { ...song, id: generateId() },
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
-  } catch (error) {
-    throw new Error("Failed to post song");
+  const { data, error } = await supabase.from("songs").insert([song]).select();
+
+  if (error) {
+    console.error(error);
+    throw new Error("Songs could not be created");
   }
+
+  return data;
 };
 
 export const deleteSongById = async (id) => {
-  try {
-    const res = await api.delete(`/songs/${id}`);
-    console.log(res);
-  } catch (error) {
-    throw new Error("Failed to delete song");
+  const { error } = await supabase.from("songs").delete().eq("id", id);
+
+  if (error) {
+    console.error(error);
+    throw new Error("Songs could not be deleted");
   }
 };
 
 export const updateSongById = async (id, updatedSong) => {
-  try {
-    await api.put(`/songs/${id}`, updatedSong, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-  } catch (error) {
-    throw new Error("Failed to update song");
+  const { data, error } = await supabase
+    .from("songs")
+    .update([updatedSong])
+    .eq("id", id)
+    .select();
+  if (error) {
+    console.error(error);
+    throw new Error("Songs could not be updated");
   }
-};
 
-export const uploadSongImage = async (file) => {
-  try {
-    const formData = new FormData();
-    formData.append("image", file);
-
-    const response = await api.post("/upload", formData, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-    });
-
-    return response.data.url;
-  } catch (error) {
-    throw new Error("Failed to upload image");
-  }
+  return data;
 };
 
 export default api;

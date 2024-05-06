@@ -70,7 +70,12 @@ function PlayListFolder({ playlist, setPlaylistId, setShowSongs }) {
 
   return (
     <CardContainer>
-      <HiFolder size={100} onClick={handleOpenPlaylist} cursor="pointer" />
+      <HiFolder
+        size={100}
+        onClick={handleOpenPlaylist}
+        cursor="pointer"
+        color="#27ae60"
+      />
       <H3>{playlist.name}</H3>
       <ButtonContainer>
         <HiPencil

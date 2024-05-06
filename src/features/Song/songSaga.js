@@ -48,7 +48,8 @@ function* deleteSong(action) {
     yield put(deleteSongStart());
     const songId = action.payload;
     yield call(deleteSongById, songId, api);
-    yield put(deleteSongSuccess());
+
+    yield put(deleteSongSuccess(songId));
     yield put(getSongsFn());
   } catch (error) {
     yield put(deleteSongFailure(error.message));

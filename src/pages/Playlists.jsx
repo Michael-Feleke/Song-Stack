@@ -21,11 +21,11 @@ const ButtonContainer = styled.div`
 `;
 
 function Playlists() {
-  const [showModal, setShowModal] = useState(false);
   const [showSongs, setShowSongs] = useState(false);
   const [playlistId, setPlaylistId] = useState(-1);
-  const toggleModal = () => setShowModal((prev) => !prev);
+  const [showModal, setShowModal] = useState(false);
 
+  const toggleModal = () => setShowModal((prev) => !prev);
   const { playlists } = useSelector((state) => state.songs);
 
   return showSongs ? (

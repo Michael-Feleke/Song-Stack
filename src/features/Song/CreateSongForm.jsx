@@ -38,7 +38,7 @@ const InputField = styled.input`
 
   &:focus {
     outline: none;
-    border-color: #8e44ad;
+    border: 1px solid var(--color-brand-600);
   }
 `;
 
@@ -71,7 +71,8 @@ function CreateSongForm({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const song = {
+
+    const songNew = {
       id,
       title,
       artist: artist == "" ? "UNKNOWN" : artist,
@@ -82,7 +83,7 @@ function CreateSongForm({
       image: "logo-light.png",
     };
 
-    isEditing ? dispatch(updateSong(song)) : dispatch(postSong(song));
+    isEditing ? dispatch(updateSong(songNew)) : dispatch(postSong(songNew));
     status === "succeeded" &&
       toast.success(
         ` ${
@@ -99,7 +100,7 @@ function CreateSongForm({
   return (
     <>
       <CloseContainer>
-        <HiXCircle onClick={handleClose} size={30} />
+        <HiXCircle onClick={handleClose} size={30} color="red" />
       </CloseContainer>
       <FormContainer onSubmit={handleSubmit}>
         <InputContainer>

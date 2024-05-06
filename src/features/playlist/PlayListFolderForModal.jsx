@@ -42,7 +42,7 @@ function PlayListFolderForModal({ playlist, song, toggleModal }) {
 
   return (
     <CardContainer onClick={handleAddToPlaylist}>
-      <HiFolder size={50} cursor="pointer" />
+      <HiFolder color="#27ae60" size={50} cursor="pointer" />
       <H3>{playlist.name}</H3>
     </CardContainer>
   );

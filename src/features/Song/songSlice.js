@@ -42,7 +42,6 @@ const songsSlice = createSlice({
       state.status = "succeeded";
       state.songs = state.songs.filter((song) => song.id !== action.payload);
       const songId = action.payload;
-      console.log(songId);
       if (state.favorites[songId]) {
         delete state.favorites[songId];
       }
@@ -76,6 +75,7 @@ const songsSlice = createSlice({
       state.status = "succeeded";
       const updatedSong = action.payload;
       const index = state.songs.findIndex((song) => song.id === updatedSong.id);
+      console.log(index);
       if (index !== -1) {
         state.songs[index] = updatedSong;
       }

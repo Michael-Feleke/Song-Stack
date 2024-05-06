@@ -11,7 +11,8 @@ import Playlists from "./Playlists";
 const Container = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
+  grid-column-gap: 7rem;
+  grid-row-gap: 5rem;
   align-items: center;
   position: relative;
   overflow: hidden;

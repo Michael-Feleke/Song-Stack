@@ -29,13 +29,15 @@ const InputLabel = styled.label`
 
 const InputField = styled.input`
   padding: 0.5rem;
-  border: 1px solid #ddd;
+  border: 1px solid var(--color-grey-500);
   border-radius: 6px;
   transition: border-color 0.3s ease;
+  color: var(--color-grey-900);
+  background-color: var(--colr-grey-50);
 
   &:focus {
     outline: none;
-    border-color: #8e44ad;
+    border: 1px solid var(--color-brand-600);
   }
 `;
 

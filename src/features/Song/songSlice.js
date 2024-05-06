@@ -42,6 +42,28 @@ const songsSlice = createSlice({
     deleteSongSuccess(state, action) {
       state.status = "succeeded";
       state.songs = state.songs.filter((song) => song.id !== action.payload);
+      const songId = action.payload;
+      console.log(songId);
+      if (state.favorites[songId]) {
+        delete state.favorites[songId];
+      }
+      try {
+        localStorage.setItem("favorites", JSON.stringify(state.favorites));
+      } catch (error) {
+        console.error("Error updating local storage:", error);
+      }
+
+      state.playlists.forEach((playlist) => {
+        playlist.songs = playlist.songs.filter(
+          (song) => song.id !== action.payload
+        );
+      });
+      try {
+        localStorage.setItem("playlists", JSON.stringify(state.playlists));
+      } catch (error) {
+        console.error("Error updating local storage:", error);
+      }
+
       state.status = "idle";
     },
     deleteSongFailure(state, action) {

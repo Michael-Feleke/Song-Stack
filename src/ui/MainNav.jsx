@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { Badge } from "@mui/material";
 import {
   HiOutlineFolder,
   HiOutlineHeart,
@@ -10,6 +11,7 @@ import {
   HiMusicalNote,
   HiOutlineRadio,
 } from "react-icons/hi2";
+import { useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 
 const NavList = styled.ul`
@@ -56,6 +58,14 @@ const StyledNavLink = styled(NavLink)`
 `;
 
 function MainNav() {
+  const { songs, favorites, playlists } = useSelector((state) => state.songs);
+
+  const playlistNumber = Object.keys(playlists).length;
+  const songsNumber = Object.keys(songs).length;
+  const favoritesNumber = Object.keys(favorites).length;
+
+  console.log(favorites);
+
   return (
     <nav>
       <NavList>
@@ -67,20 +77,26 @@ function MainNav() {
         </li>
         <li>
           <StyledNavLink to="/songs">
-            <HiMusicalNote />
-            <span>Songs</span>
+            <Badge badgeContent={songsNumber} color="#27ae60">
+              <HiMusicalNote />
+              <span>Songs</span>
+            </Badge>
           </StyledNavLink>
         </li>
         <li>
           <StyledNavLink to="/favorites">
-            <HiOutlineHeart />
-            <span>Favorites</span>
+            <Badge badgeContent={favoritesNumber} color="#27ae60">
+              <HiOutlineHeart />
+              <span>Favorites</span>
+            </Badge>
           </StyledNavLink>
         </li>
         <li>
           <StyledNavLink to="/playlists">
-            <HiOutlineFolder />
-            <span>Playlists</span>
+            <Badge badgeContent={playlistNumber} color="#27ae60">
+              <HiOutlineFolder />
+              <span>Playlists</span>
+            </Badge>
           </StyledNavLink>
         </li>
         <li>

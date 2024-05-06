@@ -20,11 +20,12 @@ const NavList = styled.ul`
 `;
 
 const StyledNavLink = styled(NavLink)`
+  width: 100%;
   &:link,
   &:visited {
     display: flex;
     align-items: center;
-    gap: 1.2rem;
+    gap: 0.4rem;
 
     color: var(--color-grey-600);
     font-size: 1.6rem;
@@ -66,8 +67,13 @@ const BadgeContainer = styled.div`
   align-items: center;
   justify-content: center;
   font-size: 0.8rem;
-  position: relative;
-  top: 1;
+  align-self: flex-start;
+  /* justify-self: flex-start; */
+`;
+
+const Div = styled.div`
+  display: flex;
+  gap: 1.2rem;
 `;
 
 function MainNav() {
@@ -82,14 +88,18 @@ function MainNav() {
       <NavList>
         <li>
           <StyledNavLink to="/dashbord">
-            <HiOutlineHome />
-            <span>Home</span>
+            <Div>
+              <HiOutlineHome />
+              <span>Home</span>
+            </Div>
           </StyledNavLink>
         </li>
         <li>
           <StyledNavLink to="/songs">
-            <HiMusicalNote />
-            <span>Songs</span>
+            <Div>
+              <HiMusicalNote />
+              <span>Songs</span>
+            </Div>
             {songsNumber > 0 && (
               <BadgeContainer>
                 <p>{songsNumber}</p>
@@ -99,8 +109,10 @@ function MainNav() {
         </li>
         <li>
           <StyledNavLink to="/favorites">
-            <HiOutlineHeart />
-            <span>Favorites</span>
+            <Div>
+              <HiOutlineHeart />
+              <span>Favorites</span>
+            </Div>
             {favoritesNumber > 0 && (
               <BadgeContainer>
                 <p>{favoritesNumber}</p>
@@ -110,8 +122,10 @@ function MainNav() {
         </li>
         <li>
           <StyledNavLink to="/playlists">
-            <HiOutlineFolder />
-            <span>Playlists</span>
+            <Div>
+              <HiOutlineFolder />
+              <span>Playlists</span>
+            </Div>
             {playlistNumber > 0 && (
               <BadgeContainer>
                 <p>{playlistNumber}</p>
@@ -121,8 +135,10 @@ function MainNav() {
         </li>
         <li>
           <StyledNavLink to="/about">
-            <HiOutlineInformationCircle />
-            <span>About</span>
+            <Div>
+              <HiOutlineInformationCircle />
+              <span>About</span>
+            </Div>
           </StyledNavLink>
         </li>
       </NavList>

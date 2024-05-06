@@ -20,21 +20,16 @@ export const fetchSongs = async () => {
 };
 
 export const postCreatedSong = async (song) => {
-  await api.post(
-    "/songs",
-    { ...song, id: generateId() },
-    {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  );
   try {
-    await api.post("/songs", song, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    await api.post(
+      "/songs",
+      { ...song, id: generateId() },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
   } catch (error) {
     throw new Error("Failed to post song");
   }

@@ -24,7 +24,7 @@ import { getSongs as getSongsFn } from "./songSlice";
 function* getSongs() {
   try {
     yield put(getSongsStart());
-    const songs = yield call(fetchSongs, api);
+    const songs = yield call(fetchSongs);
     yield put(getSongsSuccess(songs));
   } catch (error) {
     yield put(getSongsFailure(error.message));
@@ -35,8 +35,8 @@ function* postSong(action) {
   try {
     yield put(postSongStart());
     const song = action.payload;
-    yield call(postCreatedSong, song, api);
-    yield put(postSongSuccess());
+    const response = yield call(postCreatedSong, song);
+    yield put(postSongSuccess(response.data));
     yield put(getSongsFn());
   } catch (error) {
     yield put(postSongFailure(error.message));
@@ -47,7 +47,7 @@ function* deleteSong(action) {
   try {
     yield put(deleteSongStart());
     const songId = action.payload;
-    yield call(deleteSongById, songId, api);
+    yield call(deleteSongById, songId);
 
     yield put(deleteSongSuccess(songId));
     yield put(getSongsFn());
@@ -59,9 +59,10 @@ function* deleteSong(action) {
 function* updateSong(action) {
   try {
     yield put(updateSongStart());
-    const song = action.payload;
-    yield call(updateSongById, song.id, song, api);
-    yield put(updateSongSuccess(song));
+
+    const { songNew, id } = action.payload;
+    const data = yield call(updateSongById, id, songNew);
+    yield put(updateSongSuccess(data));
     yield put(getSongsFn());
   } catch (error) {
     yield put(updateSongFailure(error.message));

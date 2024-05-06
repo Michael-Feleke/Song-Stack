@@ -47,6 +47,7 @@ function PlaylistSongs({ id }) {
         size={30}
         cursor="pointer"
         onClick={() => setBacktoPlaylists((cur) => !cur)}
+        color="#27ae60"
       >
         Go Back
       </HiArrowLeftCircle>

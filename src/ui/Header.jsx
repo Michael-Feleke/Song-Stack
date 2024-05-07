@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import HeaderMenu from "./HeaderMenu";
 import UserAvatar from "../features/authentication/UserAvatar";
 import Search from "./Search";
+import Heading from "./Heading";
 
 const StyledHeader = styled.header`
   background-color: var(--color-grey-0);
@@ -14,15 +15,30 @@ const StyledHeader = styled.header`
   justify-content: flex-end;
 `;
 
+const Div = styled.div`
+  margin-right: 20rem;
+`;
+
+const Span = styled.span`
+  color: var(--color-brand-600);
+`;
+
 function Header() {
   const location = useLocation();
 
-  const isSongsOrFavorites =
-    location.pathname === "/songs" || location.pathname === "/favorites";
+  const isSongsOrFavorites = location.pathname === "/songs";
 
   return (
     <StyledHeader>
-      {isSongsOrFavorites && <Search />}
+      {isSongsOrFavorites ? (
+        <Search />
+      ) : (
+        <Div>
+          <Heading as="h1">
+            Song <Span>Stack</Span>
+          </Heading>
+        </Div>
+      )}
       <UserAvatar />
       <HeaderMenu />
     </StyledHeader>

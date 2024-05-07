@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import toast from "react-hot-toast";
 import { getSongs } from "./songSlice";
 import Spinner from "../../ui/Spinner";
+import Heading from "../../ui/Heading";
 
 const Container = styled.div`
   display: grid;
@@ -31,8 +32,12 @@ function SongContainer() {
     <Container>
       {status === "loading" && <Spinner />}
       {status === "failed" && toast.error(error)}
-      {songs.map(
-        (song) => song && song.id && <SongCard song={song} key={song.id} />
+      {!error ? (
+        songs.map(
+          (song) => song && song.id && <SongCard song={song} key={song.id} />
+        )
+      ) : (
+        <Heading as="h2">Check your connection!</Heading>
       )}
     </Container>
   );

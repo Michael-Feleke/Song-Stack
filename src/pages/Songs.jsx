@@ -30,7 +30,7 @@ function Songs() {
     <>
       <Row type="Horizontal">
         <Heading as="h1">
-          {Object.keys(songs).length == 1 ? "No songs yet" : "All Songs"}
+          {Object.keys(songs).length == 0 ? "No songs found" : "All Songs"}
         </Heading>
       </Row>
       <ButtonContainer>

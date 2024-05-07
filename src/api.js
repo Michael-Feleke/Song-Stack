@@ -26,7 +26,20 @@ export const fetchSongsByName = async (searchQuery) => {
 };
 
 export const postCreatedSong = async (song) => {
-  const { data, error } = await supabase.from("songs").insert([song]).select();
+  const { data, error } = await supabase
+    .from("songs")
+    .insert([
+      {
+        title: song.title,
+        artist: song.artist,
+        genere: song.genere,
+        album: song.album,
+        composer: song.composer,
+        releasedDate: song.releasedDate,
+        image: song.image,
+      },
+    ])
+    .select();
 
   if (error) {
     console.error(error);

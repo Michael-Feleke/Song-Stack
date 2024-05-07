@@ -50,18 +50,17 @@ function Search() {
   const { songs } = useSelector((state) => state.songs);
   const dispatch = useDispatch();
 
-  console.log(songs);
-
   function handleSearchInputChange(e) {
     const value = e.target.value;
     setSearch(value);
     dispatch(getSongsByName(value));
   }
+
   return (
     <FormContainer>
       <InputContainer>
         <Div>
-          <HiSearch style={{ margin: "0" }} />
+          <HiSearch />
         </Div>
         <InputField
           type="text"

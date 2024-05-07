@@ -13,9 +13,10 @@ import {
   deleteSongStart,
   updateSongStart,
 } from "./songSlice";
-import api, {
+import {
   deleteSongById,
   fetchSongs,
+  fetchSongsByName,
   postCreatedSong,
   updateSongById,
 } from "../../api";
@@ -25,6 +26,16 @@ function* getSongs() {
   try {
     yield put(getSongsStart());
     const songs = yield call(fetchSongs);
+    yield put(getSongsSuccess(songs));
+  } catch (error) {
+    yield put(getSongsFailure(error.message));
+  }
+}
+
+function* getSongsByName(action) {
+  try {
+    yield put(getSongsStart());
+    const songs = yield call(fetchSongsByName, action.payload);
     yield put(getSongsSuccess(songs));
   } catch (error) {
     yield put(getSongsFailure(error.message));
@@ -76,6 +87,11 @@ function* watchPostSong() {
 function* watchGetSong() {
   yield takeEvery("songs/getSongs", getSongs);
 }
+
+function* watchGetSongByName() {
+  yield takeEvery("songs/getSongsByName", getSongsByName);
+}
+
 function* watchDeleteSong() {
   yield takeEvery("songs/deleteSong", deleteSong);
 }
@@ -90,5 +106,6 @@ export function* songsSaga() {
     fork(watchPostSong),
     fork(watchDeleteSong),
     fork(watchUpdateSong),
+    fork(watchGetSongByName),
   ]);
 }

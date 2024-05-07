@@ -1,14 +1,21 @@
-import axios from "axios";
 import supabase from "./supabase";
-
-const BASE_URL = "https://michael-feleke.github.io/host_api";
-
-const api = axios.create({
-  baseURL: BASE_URL,
-});
 
 export const fetchSongs = async () => {
   let { data, error } = await supabase.from("songs").select("*");
+
+  if (error) {
+    console.error(error);
+    throw new Error("Songs could not be fetched");
+  }
+
+  return data;
+};
+
+export const fetchSongsByName = async (searchQuery) => {
+  let { data, error } = await supabase
+    .from("songs")
+    .select("*")
+    .ilike("title", `%${searchQuery}%`);
 
   if (error) {
     console.error(error);
@@ -51,5 +58,3 @@ export const updateSongById = async (id, updatedSong) => {
 
   return data;
 };
-
-export default api;

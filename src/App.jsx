@@ -8,10 +8,11 @@ import PageNotFound from "./pages/PageNotFound";
 import GlobalStyles from "./styles/GlobalStyles";
 import AppLayout from "./ui/AppLayout";
 import { Toaster } from "react-hot-toast";
+import { DarkModeProvider } from "./context/darkModeContext";
 
 function App() {
   return (
-    <>
+    <DarkModeProvider>
       <GlobalStyles />
       <BrowserRouter>
         <Routes>
@@ -47,7 +48,7 @@ function App() {
           },
         }}
       />
-    </>
+    </DarkModeProvider>
   );
 }
 

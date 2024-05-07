@@ -185,6 +185,10 @@ export const {
 } = songsSlice.actions;
 
 export const getSongs = () => ({ type: "songs/getSongs" });
+export const getSongsByName = (searchQuery) => ({
+  type: "songs/getSongsByName",
+  payload: searchQuery,
+});
 export const postSong = (song) => ({ type: "songs/postSong", payload: song });
 export const deleteSong = (id) => ({ type: "songs/deleteSong", payload: id });
 export const updateSong = (song) => ({

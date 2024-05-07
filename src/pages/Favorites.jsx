@@ -31,7 +31,7 @@ function Favorites() {
   return (
     <>
       <Heading as="h1">
-        {Object.keys(favorites).length == 1
+        {Object.keys(favorites).length == 0
           ? "No favoites yet"
           : "Your Favorites"}
       </Heading>

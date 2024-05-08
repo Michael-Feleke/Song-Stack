@@ -22,6 +22,11 @@ const CardContainer = styled.div`
   margin: 1rem;
   background-color: #cbcbcb79;
   cursor: pointer;
+
+  @media (max-width: 400px) {
+    width: 90px;
+    height: 90px;
+  }
 `;
 
 function PlayListFolderForModal({ playlist, song, toggleModal }) {

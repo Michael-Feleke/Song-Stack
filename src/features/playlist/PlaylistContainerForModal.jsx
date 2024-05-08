@@ -1,9 +1,5 @@
-import { useDispatch, useSelector } from "react-redux";
-import PlayListFolder from "./PlayListFolder";
 import styled from "@emotion/styled";
-import { useEffect, useState } from "react";
 import PlayListFolderForModal from "./PlayListFolderForModal";
-import Header from "../../ui/Header";
 import Heading from "../../ui/Heading";
 import { HiFolderAdd, HiXCircle } from "react-icons/hi";
 import Modal from "../../ui/Modal";

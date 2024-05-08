@@ -19,6 +19,16 @@ const Avatar = styled.img`
   object-position: center;
   border-radius: 50%;
   outline: 2px solid var(--color-grey-100);
+
+  @media (max-width: 430px) {
+    display: none;
+  }
+`;
+
+const Span = styled.span`
+  @media (max-width: 510px) {
+    display: none;
+  }
 `;
 
 function UserAvatar() {
@@ -32,7 +42,7 @@ function UserAvatar() {
         // alt={`Avatar of ${fullName}`}
         alt={`Avatar of `}
       />
-      <span>Michael</span>
+      <Span>Michael</Span>
       {/* <span>{fullName}</span> */}
     </StyledUserAvatar>
   );

@@ -5,7 +5,6 @@ const AboutContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* height: 100vh; */
   color: var(--color-grey-900);
   font-family: Arial, sans-serif;
 `;

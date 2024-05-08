@@ -1,18 +1,19 @@
-<h1>Song Stack</h1>
+<h1>🎵 Song Stack</h1>
 - Welcome to Song Stack, your one-stop destination for managing your music library with ease. With Song Stack, you can create, update, delete songs effortlessly, giving you full control over your musical collection.
-<h1>Song Stack</h1>
-- To run the application run the following command : -> npm i and then -> npm run dev
 
-- Below is an overview of the application:
-- 
-<h1 align="center">Songs page</h1>
+<h1>🚀 Get Started</h1>
+- To run the application, use the following commands: 
+  - `npm i` to install dependencies
+  - `npm run dev` to start the application
+
+<h1 align="center">🎶 Songs page</h1>
 <img src="./Readmeimg/Songs.png" style="width: 100%; height: auto;">
-<h1 align="center">Favorites page</h1>
+<h1 align="center">❤️ Favorites page</h1>
 <img src="./Readmeimg/Favorites.png" style="width: 100%; height: auto;">
-<h1 align="center">Playlists page</h1>
+<h1 align="center">🎧 Playlists page</h1>
 <img src="./Readmeimg/Playlists.png" style="width: 100%; height: auto;">
 
-<h1>Key Features: </h1>
+<h1>🔑 Key Features</h1>
 
 <h2>Seamlessly Manage Your Music Collection</h2>
 
@@ -30,8 +31,7 @@ Playlists
 
 - Song Stack empowers you to take full control of your music library, making it a delightful and personalized experience for music enthusiasts. Elevate your music management with Song Stack today!
 
-
-<h1>Technologies Used</h1>
+<h1>🛠 Technologies Used</h1>
 
 - React: Frontend framework for building user interfaces.
 - Redux: State management library for managing application state.
@@ -39,7 +39,7 @@ Playlists
 - Emotion: CSS-in-JS library for styling React components.
 - Supabase: Database service used to store song and user data.
 
-Contributing
+Contributing 🌟
 
 If you'd like to contribute to Song Stack, please follow these guidelines:
 
@@ -49,5 +49,3 @@ If you'd like to contribute to Song Stack, please follow these guidelines:
 - Commit your changes (git commit -am 'Add new feature').
 - Push to the branch (git push origin feature/new-feature).
 - Create a new Pull Request.
-
-

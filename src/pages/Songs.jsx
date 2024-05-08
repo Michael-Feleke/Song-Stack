@@ -3,7 +3,7 @@ import Row from "../ui/Row";
 import Heading from "../ui/Heading";
 import SongContainer from "../features/Song/SongContainer";
 import Button from "../ui/Button";
-import Modal from "../ui/Modal"; // Import your Modal component
+import Modal from "../ui/Modal";
 
 import styled from "@emotion/styled";
 import { HiMusicalNote } from "react-icons/hi2";

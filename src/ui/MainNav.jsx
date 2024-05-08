@@ -87,14 +87,6 @@ function MainNav() {
     <nav>
       <NavList>
         <li>
-          <StyledNavLink to="/dashbord">
-            <Div>
-              <HiOutlineHome />
-              <span>Home</span>
-            </Div>
-          </StyledNavLink>
-        </li>
-        <li>
           <StyledNavLink to="/songs">
             <Div>
               <HiMusicalNote />

@@ -51,7 +51,6 @@ const CloseContainer = styled.div`
 function CreatePlaylistForm({
   isEditing = false,
   toggleModal,
-  showModal,
   playlist = null,
 }) {
   const [playlistName, setPlaylistName] = useState(

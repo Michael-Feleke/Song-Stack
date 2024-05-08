@@ -1,7 +1,5 @@
-import { useDispatch, useSelector } from "react-redux";
 import PlayListFolder from "./PlayListFolder";
 import styled from "@emotion/styled";
-import { useEffect } from "react";
 
 const Container = styled.div`
   display: flex;

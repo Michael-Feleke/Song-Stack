@@ -1,6 +1,5 @@
 import { useState } from "react";
 import styled from "@emotion/styled";
-import Button from "../../ui/Button";
 import {
   HiHeart,
   HiOutlineHeart,
@@ -8,7 +7,6 @@ import {
   HiPlusCircle,
   HiTrash,
 } from "react-icons/hi";
-import { HiPlayCircle } from "react-icons/hi2";
 import { useDispatch, useSelector } from "react-redux";
 import {
   deleteSong,
@@ -17,7 +15,6 @@ import {
 } from "./songSlice";
 import Modal from "../../ui/Modal";
 import CreateSongForm from "./CreateSongForm";
-import Spinnermini from "../../ui/Spinnermini";
 import toast from "react-hot-toast";
 import { Tooltip } from "react-tooltip";
 import PlaylistContainerForModal from "../playlist/PlaylistContainerForModal";

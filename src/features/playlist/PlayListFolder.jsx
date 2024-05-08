@@ -1,10 +1,4 @@
-import {
-  HiFolder,
-  HiFolderOpen,
-  HiOutlineFolder,
-  HiPencil,
-  HiTrash,
-} from "react-icons/hi";
+import { HiFolder, HiPencil, HiTrash } from "react-icons/hi";
 import styled from "@emotion/styled";
 import { Tooltip } from "react-tooltip";
 import CreatePlaylistForm from "./CreatePlaylistForm";
@@ -13,8 +7,6 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { deletePlaylist } from "../Song/songSlice";
 import toast from "react-hot-toast";
-import { Navigate, useNavigate } from "react-router-dom";
-import PlaylistSongs from "../../pages/PlaylistSongs";
 
 const H3 = styled.h3`
   font-size: 1.5rem;
@@ -68,8 +60,6 @@ function PlayListFolder({ playlist, setPlaylistId, setShowSongs }) {
   };
 
   const handleOpenPlaylist = () => {
-    // navigate(`/playlists/${playlist.id}`);
-    // setShowSongs((cur) => !cur);
     setPlaylistId(playlist.id);
     setShowSongs((cur) => !cur);
   };

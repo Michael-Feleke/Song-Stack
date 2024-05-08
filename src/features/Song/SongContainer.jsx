@@ -23,6 +23,7 @@ const Container = styled.div`
 function SongContainer() {
   const { songs, status, error } = useSelector((state) => state.songs);
   const dispatch = useDispatch();
+  const sortedSongs = songs.slice().sort((a, b) => a.id - b.id);
 
   useEffect(() => {
     dispatch(getSongs());
@@ -33,7 +34,7 @@ function SongContainer() {
       {status === "loading" && <Spinner />}
       {status === "failed" && toast.error(error)}
       {!error ? (
-        songs.map(
+        sortedSongs.map(
           (song) => song && song.id && <SongCard song={song} key={song.id} />
         )
       ) : (

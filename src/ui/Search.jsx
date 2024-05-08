@@ -6,13 +6,13 @@ import { getSongsByName } from "../features/Song/songSlice";
 
 const FormContainer = styled.form`
   display: flex;
-  padding: 0 10rem 0 2rem;
+  margin-right: 20rem;
   flex-direction: column;
   align-items: center;
   @media (max-width: 600px) {
-    padding: 0 5rem 0 2rem;
+    margin-right: 0;
   }
-  @media (max-width: 400px) {
+  /* @media (max-width: 400px) {
     padding: 0 2rem 0 0;
     margin-left: 2rem;
     align-items: flex-start;
@@ -20,7 +20,7 @@ const FormContainer = styled.form`
   @media (max-width: 360px) {
     padding: 0 1rem 0 0;
     margin-left: 0;
-  }
+  } */
 `;
 
 const InputContainer = styled.span`
@@ -30,7 +30,7 @@ const InputContainer = styled.span`
   width: 100%;
   max-width: 400px;
 
-  @media (max-width: 600px) {
+  /* @media (max-width: 600px) {
     max-width: 300px;
     width: 70%;
   }
@@ -39,7 +39,7 @@ const InputContainer = styled.span`
   }
   @media (max-width: 360px) {
     width: 40%;
-  }
+  } */
 `;
 
 const InputField = styled.input`

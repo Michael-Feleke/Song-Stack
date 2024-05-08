@@ -33,6 +33,9 @@ const StyledHeader = styled.header`
 
 const Div = styled.div`
   margin-right: 20rem;
+  @media (max-width: 680px) {
+    margin-right: 0;
+  }
 `;
 
 const Span = styled.span`
@@ -60,7 +63,7 @@ function Header() {
         <Search />
       ) : (
         <Div>
-          <Heading as="h1">
+          <Heading as="h1" style={{ width: "100%" }}>
             Song <Span>Stack</Span>
           </Heading>
         </Div>

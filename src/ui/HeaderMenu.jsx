@@ -1,6 +1,3 @@
-import ButtonIcon from "./ButtonIcon";
-import { HiOutlineUser } from "react-icons/hi2";
-import { useNavigate } from "react-router-dom";
 import styled from "@emotion/styled";
 import DarkModeToggle from "./DarkModeToggle";
 

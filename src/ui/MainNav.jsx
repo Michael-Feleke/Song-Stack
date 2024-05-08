@@ -2,19 +2,13 @@ import styled from "@emotion/styled";
 import { useState } from "react";
 import {
   HiMenu,
-  HiMenuAlt4,
   HiOutlineFolder,
   HiOutlineHeart,
-  HiOutlineHome,
   HiOutlineInformationCircle,
 } from "react-icons/hi";
-import {
-  HiMiniArrowLeftOnRectangle,
-  HiMusicalNote,
-  HiOutlineRadio,
-} from "react-icons/hi2";
+import { HiMusicalNote } from "react-icons/hi2";
 import { useSelector } from "react-redux";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const NavModal = styled.div`
   @media (max-width: 680px) {
@@ -108,7 +102,6 @@ const BadgeContainer = styled.div`
   justify-content: center;
   font-size: 0.8rem;
   align-self: flex-start;
-  /* justify-self: flex-start; */
 `;
 
 const Div = styled.div`

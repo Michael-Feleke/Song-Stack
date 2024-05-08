@@ -5,6 +5,8 @@ import { HiFolderAdd, HiXCircle } from "react-icons/hi";
 import Modal from "../../ui/Modal";
 import CreatePlaylistForm from "./CreatePlaylistForm";
 import Button from "../../ui/Button";
+import { useSelector } from "react-redux";
+import { useState } from "react";
 
 const Container = styled.div`
   display: flex;

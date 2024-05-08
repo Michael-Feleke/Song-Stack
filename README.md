@@ -1,6 +1,9 @@
 <h1>🎵 Song Stack</h1>
 - Welcome to Song Stack, your one-stop destination for managing your music library with ease. With Song Stack, you can create, update, delete songs effortlessly, giving you full control over your musical collection.
 
+🌐 Demo Link: https://song-stack.netlify.app/
+
+
 <h1>🚀 Get Started</h1>
 - To run the application, use the following commands: 
   - `npm i` to install dependencies

@@ -27,6 +27,21 @@ const CardBox = styled.div`
   margin: 0 auto;
   border-radius: 0.75rem;
   box-shadow: 0 0 1rem var(--color-grey-300);
+  @media (max-width: 1050px) {
+    width: 100%;
+  }
+  @media (max-width: 900px) {
+    width: 85%;
+  }
+  @media (max-width: 800px) {
+    width: 100%;
+  }
+  @media (max-width: 750px) {
+    width: 85%;
+  }
+  @media (max-width: 500px) {
+    width: 50%;
+  }
 `;
 
 const Img = styled.img`
@@ -79,11 +94,18 @@ const Detail = styled.p`
   margin: 0.3rem 0 1rem;
   color: #f3f4f6;
   width: 200px;
+
+  @media (max-width: 1150px) {
+    font-size: 1rem;
+  }
 `;
 
 const Span = styled.span`
   color: var(--color-brand-600);
   font-size: 1.5rem;
+  @media (max-width: 1150px) {
+    font-size: 1.2rem;
+  }
 `;
 
 const ButtonContainer = styled.div`

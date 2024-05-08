@@ -5,7 +5,7 @@ import { useLocalStorageState } from "../hooks/useLocalStorageState";
 const DarkModeContext = createContext();
 
 function DarkModeProvider({ children }) {
-  const [isDarkMode, setIsDarkMode] = useLocalStorageState(false);
+  const [isDarkMode, setIsDarkMode] = useLocalStorageState(true, "dark-mode");
 
   useEffect(() => {
     if (isDarkMode) {

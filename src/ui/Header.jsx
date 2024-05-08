@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { useLocation } from "react-router-dom";
 import HeaderMenu from "./HeaderMenu";
-import UserAvatar from "../features/authentication/UserAvatar";
+import UserAvatar from "./UserAvatar";
 import Search from "./Search";
 import Heading from "./Heading";
 import MainNav from "./MainNav";
@@ -9,7 +9,6 @@ import MainNav from "./MainNav";
 const StyledHeader = styled.header`
   background-color: var(--color-grey-0);
   padding: 1.2rem 4.8rem;
-  /* border-bottom: 1px solid var(--color-grey-100); */
   display: flex;
   gap: 2.4rem;
   align-items: center;

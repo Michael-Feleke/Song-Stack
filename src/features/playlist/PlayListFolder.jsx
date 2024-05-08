@@ -42,6 +42,11 @@ const CardContainer = styled.div`
   height: 200px;
   margin: 1rem;
   background-color: var(--color-grey-100);
+
+  @media (max-width: 600px) {
+    width: 150px;
+    height: 150px;
+  }
 `;
 
 function PlayListFolder({ playlist, setPlaylistId, setShowSongs }) {

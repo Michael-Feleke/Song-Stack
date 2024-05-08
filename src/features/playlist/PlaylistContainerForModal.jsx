@@ -21,7 +21,12 @@ const Container = styled.div`
   border-radius: 2rem;
   box-shadow: 0 0 1rem var(--bg-color);
   padding: 2rem 0;
+
+  @media (max-width: 540px) {
+    width: 300px;
+  }
 `;
+
 const CloseContainer = styled.div`
   display: flex;
   justify-content: end;

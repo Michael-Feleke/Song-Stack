@@ -84,6 +84,15 @@ function GlobalStyles() {
 
         html {
           font-size: 62.5%;
+          @media (max-width: 768px) {
+            font-size: 60%;
+          }
+          @media (max-width: 600px) {
+            font-size: 57.5%;
+          }
+          @media (max-width: 480px) {
+            font-size: 55%;
+          }
         }
 
         body {

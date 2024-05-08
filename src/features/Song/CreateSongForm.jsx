@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { useState } from "react";
 import Button from "../../ui/Button";
-import { HiCalendar, HiMusicalNote } from "react-icons/hi2";
+import { HiMusicalNote } from "react-icons/hi2";
 import { useDispatch, useSelector } from "react-redux";
 import { postSong, updateSong } from "./songSlice";
 import Spinnermini from "../../ui/Spinnermini";
@@ -56,12 +56,7 @@ const CloseContainer = styled.div`
   cursor: pointer;
 `;
 
-function CreateSongForm({
-  song = null,
-  isEditing = false,
-  toggleModal,
-  showModal,
-}) {
+function CreateSongForm({ song = null, isEditing = false, toggleModal }) {
   const id = isEditing ? song.id : null;
   const [title, setTitle] = useState(isEditing ? song.title : "");
   const [artist, setArtist] = useState(isEditing ? song.artist : "");

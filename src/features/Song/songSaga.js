@@ -19,7 +19,7 @@ import {
   fetchSongsByName,
   postCreatedSong,
   updateSongById,
-} from "../../api";
+} from "../../services/api";
 import { getSongs as getSongsFn } from "./songSlice";
 
 function* getSongs() {

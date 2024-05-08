@@ -1,5 +1,4 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import Dashbord from "./pages/Dashbord";
 import Songs from "./pages/Songs";
 import Playlists from "./pages/Playlists";
 import About from "./pages/About";
@@ -17,8 +16,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route element={<AppLayout />}>
-            <Route index element={<Navigate replace to="dashbord" />} />
-            <Route path="dashbord" element={<Dashbord />} />
+            <Route index element={<Navigate replace to="songs" />} />
             <Route path="songs" element={<Songs />} />
             <Route path="favorites" element={<Favorites />} />
             <Route path="playlists" element={<Playlists />} />

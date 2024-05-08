@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
-import { HiArrowLeft } from "react-icons/hi";
 import { HiArrowLeftCircle } from "react-icons/hi2";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, useNavigate } from "react-router-dom";
 import { getSongs } from "../features/Song/songSlice";
 import SongCard from "../features/Song/SongCard";
 import styled from "@emotion/styled";

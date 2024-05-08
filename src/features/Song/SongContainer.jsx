@@ -18,6 +18,25 @@ const Container = styled.div`
   border-radius: 2rem;
   box-shadow: 0 0 1rem var(--bg-color);
   padding: 2rem 0;
+
+  @media (max-width: 900px) {
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 3rem;
+  }
+
+  @media (max-width: 800px) {
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 5rem;
+  }
+
+  @media (max-width: 750px) {
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 3rem;
+  }
+  @media (max-width: 500px) {
+    grid-template-columns: repeat(1, 1fr);
+    grid-column-gap: 0;
+  }
 `;
 
 function SongContainer() {

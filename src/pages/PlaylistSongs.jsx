@@ -22,7 +22,6 @@ const Container = styled.div`
 `;
 
 function PlaylistSongs({ id }) {
-  // const { id } = useParams();
   const [backtoPlaylists, setBacktoPlaylists] = useState(false);
 
   const songs = useSelector((state) => state.songs.songs);
@@ -51,20 +50,24 @@ function PlaylistSongs({ id }) {
       >
         Go Back
       </HiArrowLeftCircle>
-      <Container>
-        {songsInPlaylist?.map(
-          (song) =>
-            song &&
-            song.id && (
-              <SongCard
-                song={song}
-                key={song.id}
-                isInPlaylist={true}
-                playlist={playlist}
-              />
-            )
-        )}
-      </Container>
+      {songsInPlaylist && songsInPlaylist.length > 0 ? (
+        <Container>
+          {songsInPlaylist.map(
+            (song) =>
+              song &&
+              song.id && (
+                <SongCard
+                  song={song}
+                  key={song.id}
+                  isInPlaylist={true}
+                  playlist={playlist}
+                />
+              )
+          )}
+        </Container>
+      ) : (
+        <p>No songs added to this playlist.</p>
+      )}
     </div>
   );
 }

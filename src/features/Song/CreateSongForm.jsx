@@ -1,12 +1,13 @@
 import styled from "@emotion/styled";
 import { useState } from "react";
 import Button from "../../ui/Button";
-import { HiMusicalNote } from "react-icons/hi2";
+import { HiCalendar, HiMusicalNote } from "react-icons/hi2";
 import { useDispatch, useSelector } from "react-redux";
 import { postSong, updateSong } from "./songSlice";
 import Spinnermini from "../../ui/Spinnermini";
 import { HiXCircle } from "react-icons/hi";
 import toast from "react-hot-toast";
+import { useDarkMode } from "../../context/darkModeContext";
 
 const FormContainer = styled.form`
   display: flex;
@@ -30,7 +31,6 @@ const InputLabel = styled.label`
   margin-bottom: 0.5rem;
   color: var(--color-grey-600);
 `;
-
 const InputField = styled.input`
   padding: 0.5rem;
   border: 1px solid var(--color-grey-500);
@@ -42,6 +42,10 @@ const InputField = styled.input`
   &:focus {
     outline: none;
     border: 1px solid var(--color-brand-600);
+  }
+
+  &::-webkit-calendar-picker-indicator {
+    filter: ${(props) => (props.isDarkMode ? "invert(100%)" : "invert(0%)")};
   }
 `;
 
@@ -67,6 +71,7 @@ function CreateSongForm({
   const [releasedDate, setReleasedDate] = useState(
     isEditing ? song.releasedDate : ""
   );
+  const { isDarkMode, toggleDarkMode } = useDarkMode();
 
   const status = useSelector((state) => state.songs.status);
 
@@ -161,6 +166,7 @@ function CreateSongForm({
             value={releasedDate}
             onChange={(e) => setReleasedDate(e.target.value)}
             placeholder="Enter released date"
+            isDarkMode={isDarkMode}
           />
         </InputContainer>
         {status === "loading" ? (

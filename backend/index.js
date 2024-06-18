@@ -1,5 +1,7 @@
 import dotenv from "dotenv";
-import { connectDB } from "./config/database";
+import express from "express";
+import songsRoute from "./routes/songsRoute.js";
+import { connectDB } from "./config/database.js";
 
 dotenv.config();
 
@@ -17,4 +19,8 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use("/api/songs");
+app.use("/api/songs", songsRoute);
+
+app.listen(PORT, () => {
+  console.log(`Listening to PORT ${PORT}`);
+});

@@ -17,6 +17,6 @@ router.post("/", createSong);
 
 router.delete("/:id", deleteSong);
 
-router.put("/:id", updateSong);
+router.patch("/:id", updateSong);
 
 export default router;

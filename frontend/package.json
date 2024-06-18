@@ -1,5 +1,6 @@
 {
   "name": "song-stack",
+  "proxy": "http://127.0.0.1:8080",
   "private": true,
   "version": "0.0.0",
   "type": "module",

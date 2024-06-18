@@ -1,11 +1,15 @@
 import express from "express";
-import { createSong, getSongs } from "../controllers/songsController.js";
+import {
+  createSong,
+  getSong,
+  getSongs,
+} from "../controllers/songsController.js";
 
 const router = express.Router();
 
 router.get("/", getSongs);
 
-// router.get("/:id", getSong);
+router.get("/:id", getSong);
 
 router.post("/", createSong);
 

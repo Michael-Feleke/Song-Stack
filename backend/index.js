@@ -2,6 +2,7 @@ import dotenv from "dotenv";
 import express from "express";
 import songsRoute from "./routes/songsRoute.js";
 import { connectDB } from "./config/database.js";
+import { globalErrorHandler } from "./controllers/errorController.js";
 
 dotenv.config();
 
@@ -20,6 +21,8 @@ app.use((req, res, next) => {
 });
 
 app.use("/api/songs", songsRoute);
+
+app.use(globalErrorHandler);
 
 app.listen(PORT, () => {
   console.log(`Listening to PORT ${PORT}`);

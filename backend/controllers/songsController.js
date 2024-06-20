@@ -1,9 +1,11 @@
 import song from "../models/songs/songsModel.js";
 import { catchAsync } from "../utils/catchUtils.js";
+import { getCurrentUser } from "../utils/getCurrentUser.js";
 import { isIdValid } from "../utils/validationUtils.js";
 
 const getSongs = catchAsync(async (req, res) => {
-  const songs = await song.getAllSongs();
+  const { _id } = req.foundUser;
+  const songs = await song.getAllSongs(_id);
   res.status(200).json(songs);
 });
 
@@ -20,6 +22,9 @@ const getSong = catchAsync(async (req, res) => {
 
 const createSong = catchAsync(async (req, res) => {
   const { title, artist, genre, album, composer, releasedDate } = req.body;
+
+  const { _id } = req.foundUser;
+
   const newSong = {
     title,
     artist,
@@ -27,6 +32,7 @@ const createSong = catchAsync(async (req, res) => {
     album,
     composer,
     releasedDate,
+    createdBy: _id,
   };
   const createdSong = await song.createNewSong(newSong);
   res.status(200).json(createdSong);

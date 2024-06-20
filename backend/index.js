@@ -15,6 +15,7 @@ const PORT = process.env.PORT;
 const app = express();
 
 app.use(express.json());
+app.use(cookieParser());
 
 app.use((req, res, next) => {
   console.log(req.url, req.method);
@@ -31,13 +32,3 @@ app.use(globalErrorHandler);
 app.listen(PORT, () => {
   console.log(`Listening for requests on PORT ${PORT}`);
 });
-
-app.get("/set-cookies", (req, res) => {
-  res.cookie("newUser", false);
-  res.cookie("isLoggedIn", false, {
-    maxAge: 1000 * 60 * 60 * 24,
-    httpOnly: true,
-  });
-});
-
-app.get("/get-cookies", (req, res) => {});

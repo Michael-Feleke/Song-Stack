@@ -7,12 +7,13 @@ dotenv.config();
 const requireAuth = (req, res, next) => {
   const token = req.cookies.jwt;
   if (token) {
-    jwt.verify(token, process.env.SECRET_KEY, (err, decodedToken) => {
+    jwt.verify(token, process.env.SECRET_KEY, async (err, decodedToken) => {
       if (err) {
         console.log(err);
         res.status(401).json({ message: "Unauthorized: No token provided" });
       } else {
-        console.log(decodedToken);
+        let foundUser = await user.findUserById(decodedToken.id);
+        req.foundUser = foundUser;
         next();
       }
     });
@@ -28,11 +29,10 @@ const checkUser = (req, res, next) => {
       if (err) {
         console.log(err);
         res.status(404).json({ message: "user not logged in" });
-        next();
       } else {
         let foundUser = await user.findUserById(decodedToken.id);
+        req.foundUser = foundUser;
         res.status(200).json(foundUser);
-        next();
       }
     });
   } else {

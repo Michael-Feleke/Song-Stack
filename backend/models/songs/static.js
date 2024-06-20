@@ -1,5 +1,5 @@
-export async function getAllSongs() {
-  return this.find({}).sort({ createdAt: -1 });
+export async function getAllSongs(_id) {
+  return this.find({ createdBy: _id }).sort({ createdAt: -1 });
 }
 
 export async function getSongById(id) {

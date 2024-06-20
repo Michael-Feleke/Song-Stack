@@ -5,6 +5,7 @@ import songsRoute from "./routes/songsRoute.js";
 import { connectDB } from "./config/database.js";
 import { globalErrorHandler } from "./controllers/errorController.js";
 import cookieParser from "cookie-parser";
+import { checkUser } from "./middleware/authMiddleware.js";
 
 dotenv.config();
 
@@ -24,6 +25,8 @@ app.use((req, res, next) => {
 });
 
 app.use("/auth", authRoute);
+
+app.use("/api/user", checkUser);
 
 app.use("/api/songs", songsRoute);
 

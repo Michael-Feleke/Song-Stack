@@ -7,8 +7,11 @@ import {
   updateSong,
 } from "../controllers/songsController.js";
 import { validateSong } from "../validation/validateSongs.js";
+import { checkUser, requireAuth } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
+
+router.use(requireAuth);
 
 router.get("/", getSongs);
 

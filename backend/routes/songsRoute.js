@@ -7,7 +7,7 @@ import {
   updateSong,
 } from "../controllers/songsController.js";
 import { validateSong } from "../validation/validateSongs.js";
-import { checkUser, requireAuth } from "../middleware/authMiddleware.js";
+import { requireAuth } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 

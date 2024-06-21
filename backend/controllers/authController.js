@@ -18,6 +18,7 @@ const userSignup = catchAsync(async (req, res) => {
   });
   res.status(200).json({ user: createdUser._id });
 });
+
 const userLogin = catchAsync(async (req, res) => {
   const { email, password } = req.body;
   const loggedUser = await user.login(email, password);

@@ -5,22 +5,23 @@ import {
   getSongs,
   deleteSong,
   updateSong,
+  getAllSongs,
 } from "../controllers/songsController.js";
 import { validateSong } from "../validation/validateSongs.js";
-import { requireAuth } from "../middleware/authMiddleware.js";
+import { checkSongPermission } from "../middleware/checkSongPermission.js";
 
 const router = express.Router();
 
-router.use(requireAuth);
+router.get("/", checkSongPermission("readOwn", "song"), getSongs);
 
-router.get("/", getSongs);
+router.get("/all", checkSongPermission("readAny", "song"), getAllSongs);
 
-router.get("/:id", getSong);
+router.get("/:id", checkSongPermission("readOwn", "song"), getSong);
 
 router.post("/", validateSong, createSong);
 
-router.delete("/:id", deleteSong);
+router.delete("/:id", checkSongPermission("deleteOwn", "song"), deleteSong);
 
-router.patch("/:id", updateSong);
+router.patch("/:id", checkSongPermission("updateOwn", "song"), updateSong);
 
 export default router;

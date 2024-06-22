@@ -1,11 +1,13 @@
 import dotenv from "dotenv";
 import express from "express";
 import authRoute from "./routes/authRoutes.js";
+import userRoute from "./routes/userRoutes.js";
+import adminRoute from "./routes/adminRoutes.js";
 import songsRoute from "./routes/songsRoute.js";
 import { connectDB } from "./config/database.js";
 import { globalErrorHandler } from "./controllers/errorController.js";
 import cookieParser from "cookie-parser";
-import { checkUser } from "./middleware/authMiddleware.js";
+import { requireAuth } from "./middleware/authMiddleware.js";
 
 dotenv.config();
 
@@ -26,7 +28,11 @@ app.use((req, res, next) => {
 
 app.use("/auth", authRoute);
 
-app.use("/api/user", checkUser);
+app.use(requireAuth);
+
+app.use("/api/user", userRoute);
+
+app.use("/api/admin", adminRoute);
 
 app.use("/api/songs", songsRoute);
 

@@ -13,6 +13,12 @@ const userSchema = Joi.object({
     "string.min": "Password should have a minimum length of {#limit}",
     "any.required": "Password is a required field",
   }),
+  role: Joi.string().valid("user", "admin").required().messages({
+    "string.base": "Role should be a type of text",
+    "string.empty": "Role cannot be an empty field",
+    "any.only": "Role must be one of the following values: user, admin",
+    "any.required": "Role is a required field",
+  }),
 });
 
 const validateAuth = (req, res, next) => {

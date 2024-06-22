@@ -12,6 +12,18 @@ export async function findUserById(id) {
   return await this.findById(id);
 }
 
+export async function getAllUsers() {
+  return await this.find();
+}
+
+export async function updateUserById(idObj, bodyObj) {
+  return this.findOneAndUpdate(idObj, bodyObj);
+}
+
+export async function deleteUserById(id) {
+  return this.findOneAndDelete(id);
+}
+
 export async function login(email, password) {
   const user = await this.findOne({ email });
   if (user) {

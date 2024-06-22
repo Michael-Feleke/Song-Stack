@@ -7,8 +7,8 @@ import { createToken } from "../utils/createToken.js";
 dotenv.config();
 
 const userSignup = catchAsync(async (req, res) => {
-  const { email, password } = req.body;
-  const newUser = { email, password };
+  const { email, password, role } = req.body;
+  const newUser = { email, password, role };
 
   const createdUser = await user.createUser(newUser);
   const token = createToken(createdUser._id);

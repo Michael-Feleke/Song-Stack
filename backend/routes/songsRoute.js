@@ -24,4 +24,18 @@ router.delete("/:id", checkSongPermission("deleteOwn", "song"), deleteSong);
 
 router.patch("/:id", checkSongPermission("updateOwn", "song"), updateSong);
 
+/////////////////////////////////////////////////////////
+
+router.patch(
+  "/users/:id",
+  checkSongPermission("updateAny", "song"),
+  updateSong
+);
+
+router.delete(
+  "/users/:id",
+  checkSongPermission("deleteAny", "song"),
+  deleteSong
+);
+
 export default router;

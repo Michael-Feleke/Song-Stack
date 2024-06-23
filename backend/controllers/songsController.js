@@ -46,7 +46,10 @@ const deleteSong = catchAsync(async (req, res) => {
   const { id } = req.params;
   if (!isIdValid(id)) return res.status(404).json({ error: "No such song" });
 
+  console.log(id);
+
   const deletedSong = await song.deleteSongById(id);
+
   if (!deletedSong) return res.status(404).json({ error: "No such song" });
 
   res.status(200).json(deletedSong);

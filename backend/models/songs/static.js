@@ -15,7 +15,7 @@ export async function createNewSong(newSong) {
 }
 
 export async function deleteSongById(id) {
-  return this.findOneAndDelete(id);
+  return this.findByIdAndDelete(id);
 }
 
 export async function updateSongById(idObj, bodyObj) {

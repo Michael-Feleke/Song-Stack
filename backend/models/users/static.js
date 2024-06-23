@@ -21,7 +21,7 @@ export async function updateUserById(idObj, bodyObj) {
 }
 
 export async function deleteUserById(id) {
-  return this.findOneAndDelete(id);
+  return this.findByIdAndDelete(id);
 }
 
 export async function login(email, password) {

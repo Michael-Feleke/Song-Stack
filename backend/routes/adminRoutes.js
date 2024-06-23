@@ -1,6 +1,6 @@
 import express from "express";
 import {
-  deleteUser,
+  deleteOtherUser,
   getUsers,
   updateUser,
 } from "../controllers/userController.js";
@@ -17,7 +17,7 @@ router.patch(
 router.delete(
   "/users/:id",
   checkUserPermission("deleteAny", "account"),
-  deleteUser
+  deleteOtherUser
 );
 
 export default router;

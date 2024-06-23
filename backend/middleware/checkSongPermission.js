@@ -15,8 +15,6 @@ const checkSongPermission = function (action, resource) {
 
       const { _id } = req.foundUser;
 
-      console.log(req.url);
-
       const resourceItem = resourceId
         ? await song.getSongById(resourceId)
         : await song.getAllOwnSongs(_id);
@@ -24,15 +22,17 @@ const checkSongPermission = function (action, resource) {
       if (!resourceItem)
         return res.status(403).json({ message: "Forbidden song operation" });
 
-      if (resourceId && resourceItem.createdBy !== _id)
+      if (resourceId && resourceItem.createdBy !== _id.toString())
         return res.status(403).json({ message: "Forbidden song operation" });
 
-      const isForbidden = resourceItem.some((resource) => {
-        if (resource.createdBy !== _id.toString()) return true;
-        else return false;
-      });
-      if (isForbidden)
-        return res.status(403).json({ message: "Forbidden song operation" });
+      if (Array.isArray(resourceItem)) {
+        const isForbidden = resourceItem.some((resource) => {
+          if (resource.createdBy !== _id.toString()) return true;
+          else return false;
+        });
+        if (isForbidden)
+          return res.status(403).json({ message: "Forbidden song operation" });
+      }
     }
 
     req.permission = permission;

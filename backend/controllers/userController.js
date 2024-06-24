@@ -34,6 +34,7 @@ const deleteUser = catchAsync(async (req, res) => {
 
   res.status(200).json(deletedUser);
 });
+
 const deleteOtherUser = catchAsync(async (req, res) => {
   const { id } = req.params;
   if (!isIdValid(id)) return res.status(404).json({ error: "No such user" });

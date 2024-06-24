@@ -3,6 +3,7 @@ import express from "express";
 import authRoute from "./routes/authRoutes.js";
 import userRoute from "./routes/userRoutes.js";
 import adminRoute from "./routes/adminRoutes.js";
+import { adminJs, router as adminRouter } from "./config/admin.js";
 import songsRoute from "./routes/songsRoute.js";
 import { connectDB } from "./config/database.js";
 import { globalErrorHandler } from "./controllers/errorController.js";
@@ -25,6 +26,8 @@ app.use((req, res, next) => {
 
   next();
 });
+
+app.use(adminJs.options.rootPath, adminRouter);
 
 app.use("/auth", authRoute);
 

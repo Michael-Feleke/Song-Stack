@@ -30,7 +30,8 @@ const songSchema = new Schema(
       required: true,
     },
     createdBy: {
-      type: String,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "user",
       required: true,
     },
   },

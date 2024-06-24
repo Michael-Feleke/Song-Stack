@@ -18,7 +18,12 @@ router.get("/all", checkSongPermission("readAny", "song"), getAllSongs);
 
 router.get("/:id", checkSongPermission("readOwn", "song"), getSong);
 
-router.post("/", validateSong, createSong);
+router.post(
+  "/",
+  checkSongPermission("createOwn", "song"),
+  validateSong,
+  createSong
+);
 
 router.delete("/:id", checkSongPermission("deleteOwn", "song"), deleteSong);
 

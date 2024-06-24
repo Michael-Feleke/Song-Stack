@@ -1,9 +1,10 @@
-import AdminJs from "adminjs";
+import AdminJs, { ListAction } from "adminjs";
 import AdminJsExpress from "@adminjs/express";
 import * as AdminJsMongoose from "@adminjs/mongoose";
 import user from "../models/users/usersModel.js";
 import song from "../models/songs/songsModel.js";
 import dotenv from "dotenv";
+import { Components, componentLoader } from "../components/components.js";
 
 dotenv.config();
 
@@ -17,6 +18,21 @@ const adminJs = new AdminJs({
         parent: {
           name: "User Management",
         },
+        listProperties: ["_id", "email", "role", "userAvatar"],
+        showProperties: ["_id", "email", "role", "userAvatar"],
+        editProperties: ["email", "role"],
+        properties: {
+          createdBy: {
+            type: "reference",
+            reference: "user",
+          },
+          userAvatar: {
+            type: "string",
+            components: {
+              list: Components.UserAvatar,
+            },
+          },
+        },
       },
     },
     {
@@ -28,6 +44,7 @@ const adminJs = new AdminJs({
       },
     },
   ],
+  componentLoader,
   rootPath: "/admin",
 });
 
@@ -46,5 +63,7 @@ const router = AdminJsExpress.buildAuthenticatedRouter(adminJs, {
   cookieName: "adminjs",
   cookiePassword: process.env.SECRET_KEY,
 });
+
+adminJs.watch();
 
 export { adminJs, router };

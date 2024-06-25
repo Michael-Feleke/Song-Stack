@@ -1,10 +1,12 @@
-import AdminJs, { ListAction } from "adminjs";
+import AdminJs from "adminjs";
 import AdminJsExpress from "@adminjs/express";
 import * as AdminJsMongoose from "@adminjs/mongoose";
 import user from "../models/users/usersModel.js";
 import song from "../models/songs/songsModel.js";
 import dotenv from "dotenv";
 import { Components, componentLoader } from "../components/components.js";
+import passwordFeature from "@adminjs/passwords";
+import bcrypt from "bcrypt";
 
 dotenv.config();
 
@@ -14,23 +16,36 @@ const adminJs = new AdminJs({
   resources: [
     {
       resource: user,
+      features: [
+        passwordFeature({
+          componentLoader,
+          properties: {
+            encryptedPassword: "password",
+            password: "newPassword",
+          },
+          hash: async (password) => {
+            const salt = await bcrypt.genSalt();
+            return bcrypt.hash(password, salt);
+          },
+        }),
+      ],
       options: {
         parent: {
           name: "User Management",
+          icon: "User",
         },
         listProperties: ["_id", "email", "role", "userAvatar"],
         showProperties: ["_id", "email", "role", "userAvatar"],
-        editProperties: ["email", "role"],
         properties: {
-          createdBy: {
-            type: "reference",
-            reference: "user",
-          },
           userAvatar: {
             type: "string",
             components: {
               list: Components.UserAvatar,
             },
+          },
+          password: {
+            type: "password",
+            isVisible: false,
           },
         },
       },
@@ -40,6 +55,7 @@ const adminJs = new AdminJs({
       options: {
         parent: {
           name: "Song Management",
+          icon: "Music",
         },
       },
     },
